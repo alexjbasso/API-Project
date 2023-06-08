@@ -51,4 +51,13 @@ router.post(
   }
 )
 
+// Logs user out by deleting login token from cookies
+router.delete(
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
+
 module.exports = router
