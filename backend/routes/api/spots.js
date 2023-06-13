@@ -112,14 +112,16 @@ router.post('/:spotId/images', async (req, res) => {
 
   const spot = await Spot.findByPk(req.params.spotId);
 
+
   const newSpotImage = await SpotImage.create({
-    spotId: spot.id, url, preview: preview === "true" ? true : false
+    spotId: spot.id, url, preview: preview === true ? true : false
   })
 
   res.json({
-    url: newSpotImage.getDataValue("url"),
-    preview: newSpotImage.getDataValue("preview")
+    url: newSpotImage.url,
+    preview: newSpotImage.preview
   })
+
 })
 
 // Get spot details
