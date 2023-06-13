@@ -61,7 +61,7 @@ router.post(
     const { email, password, username } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
     // Creating new user in the database with the credentials and hashed password
-    const user = await User.create({ email, username, hashedPasswor, firstName, lastName });
+    const user = await User.create({ email, username, hashedPassword, firstName, lastName });
 
     // Storing non-sensitive info in object to pass later with token
     const safeUser = {
