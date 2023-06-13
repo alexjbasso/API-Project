@@ -4,7 +4,7 @@ const express = require('express');
 // Auth
 const bcrypt = require('bcryptjs');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Spot } = require('../../db/models');
 
 // Validation
 const { check } = require('express-validator');
@@ -33,13 +33,19 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage('Password must be 6 characters or more.'),
+    check('firstName')
+    .exists({ checkFalsy: true })
+    .withMessage('First name is required'),
+  check('lastName')
+    .exists({ checkFalsy: true })
+    .withMessage('Last lame is required'),
   handleValidationErrors
 ];
 
 router.get(
   '/',
   async (req, res) => {
-    const users = await User.findAll()
+    const users = await Spot.findAll()
 
     return res.json({
       users
@@ -55,13 +61,15 @@ router.post(
     const { email, password, username } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
     // Creating new user in the database with the credentials and hashed password
-    const user = await User.create({ email, username, hashedPassword });
+    const user = await User.create({ email, username, hashedPasswor, firstName, lastName });
 
     // Storing non-sensitive info in object to pass later with token
     const safeUser = {
       id: user.id,
       email: user.email,
       username: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName
     };
 
     // Sets token with new user object
