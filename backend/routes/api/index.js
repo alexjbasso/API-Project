@@ -18,9 +18,4 @@ router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
 });
 
-
-//===Route Handlers===//
-
-
-
 module.exports = router;

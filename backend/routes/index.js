@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/test', function (req, res) {
-  console.log("Test route")
-  res.json("Test route");
+router.get('/', function (req, res) {
+  res.json("Please give me an A");
 });
 
 router.get("/api/csrf/restore", (req, res) => {

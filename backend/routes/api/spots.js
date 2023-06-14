@@ -5,6 +5,10 @@ const express = require('express');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+// Authorization
+const { restoreUser, requireAuth, requireLogIn } = require("../../utils/auth");
+
+
 const router = express.Router();
 
 // Imports
@@ -40,6 +44,28 @@ const findAvgRating = (spot) => {
   return { average: avgStarRating, count: ratings.length }
 }
 
+const canEdit = async (req, _res, next) => {
+
+  let spot = await Spot.findByPk(req.params.spotId);
+
+  if (spot.ownerId !== req.user.id) {
+    return next(
+      new Error("You do not have valid permissions to edit this resource")
+    );
+  }
+  next();
+}
+
+
+const spotCheck = async (req, res, next) => {
+  let spot = await Spot.findByPk(req.params.spotId);
+
+  if (!spot) {
+    throw new Error('Spot couldn\'t be found')
+  }
+  next();
+}
+
 router.get('/test', async (req, res) => {
 
   const spots = await Spot.findAll({
@@ -59,9 +85,8 @@ router.get('/test', async (req, res) => {
 })
 
 
-
 // Get current users's spots
-router.get('/current', async (req, res) => {
+router.get('/current', requireLogIn, async (req, res) => {
   const spots = await req.user.getSpots({
     include: [
       { model: Review },
@@ -107,7 +132,7 @@ router.get('/current', async (req, res) => {
 })
 
 // Create a new image for a spot
-router.post('/:spotId/images', async (req, res) => {
+router.post('/:spotId/images', requireLogIn, spotCheck, canEdit, async (req, res) => {
   const { url, preview } = req.body;
 
   const spot = await Spot.findByPk(req.params.spotId);
@@ -125,7 +150,7 @@ router.post('/:spotId/images', async (req, res) => {
 })
 
 // Get spot details
-router.get('/:spotId', async (req, res) => {
+router.get('/:spotId', spotCheck, async (req, res) => {
 
   let spot = await Spot.findByPk(req.params.spotId, {
     include: [
@@ -134,6 +159,8 @@ router.get('/:spotId', async (req, res) => {
       { model: Review }
     ]
   })
+
+
 
   const { average, count } = findAvgRating(spot);
 
@@ -159,9 +186,16 @@ router.get('/:spotId', async (req, res) => {
 })
 
 // Edit spot details
-router.put('/:spotId', async (req, res) => {
+router.put('/:spotId', requireLogIn, spotCheck, canEdit, async (req, res) => {
 
   const { address, city, state, country, lat, lng, name, description, price } = req.body
+
+  let error = validateSpot(address, city, state, country, lat, lng, name, description, price)
+  if (error) {
+    res.status(400)
+    return res.json({ message: "Bad Request", error: error })
+  }
+
   let spot = await Spot.findByPk(req.params.spotId);
 
   if (address) {
@@ -198,7 +232,7 @@ router.put('/:spotId', async (req, res) => {
 })
 
 // Delete a spot
-router.delete('/:spotId', async (req, res) => {
+router.delete('/:spotId', requireLogIn, spotCheck, canEdit, async (req, res) => {
   const spot = await Spot.findByPk(req.params.spotId)
   await spot.destroy();
   return res.json({ message: "Successfully deleted" })
@@ -249,7 +283,7 @@ router.get('/', async (req, res) => {
 )
 
 // Create a new spot
-router.post('/', async (req, res) => {
+router.post('/', requireLogIn, async (req, res) => {
 
   const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
