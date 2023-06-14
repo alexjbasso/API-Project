@@ -12,7 +12,7 @@ const { restoreUser, requireAuth, requireLogIn } = require("../../utils/auth");
 const router = express.Router();
 
 // Imports
-const { Spot, User, Review, SpotImage, Sequelize } = require('../../db/models');
+const { Spot, User, Review, SpotImage, ReviewImage, Sequelize } = require('../../db/models');
 
 // Middleware
 const validateSpot = (address, city, state, country, lat, lng, name, description, price) => {
@@ -34,6 +34,17 @@ const validateSpot = (address, city, state, country, lat, lng, name, description
   }
 }
 
+const validateReview = (review, stars) => {
+
+  let error = {}
+  if (!review) error.review = "Review text is required"
+  if (!stars || stars > 5 || stars < 1) error.stars = "Stars must be an integer from 1 to 5"
+
+  if (Object.keys(error).length > 0) {
+    return error
+  }
+}
+
 const findAvgRating = (spot) => {
   let total = 0;
   const ratings = spot.Reviews.map((review) => {
@@ -44,24 +55,46 @@ const findAvgRating = (spot) => {
   return { average: avgStarRating, count: ratings.length }
 }
 
-const canEdit = async (req, _res, next) => {
+const canEdit = async (req, res, next) => {
 
   let spot = await Spot.findByPk(req.params.spotId);
 
   if (spot.ownerId !== req.user.id) {
-    return next(
-      new Error("You do not have valid permissions to edit this resource")
-    );
+    return res.status(403).json({ message: ('Forbidden') })
   }
   next();
 }
-
 
 const spotCheck = async (req, res, next) => {
   let spot = await Spot.findByPk(req.params.spotId);
 
   if (!spot) {
-    throw new Error('Spot couldn\'t be found')
+    return res.status(404).json({ message: ('Spot couldn\'t be found') })
+  }
+  req.spot = spot
+  next();
+}
+
+const revAuthBySpot = async (req, res, next) => {
+
+  const valReview = await Review.findAll({
+    include: [{
+      model: Spot,
+      where: {
+        id: req.spot.id
+      }
+    },
+    {
+      model: User,
+      where: {
+        id: req.user.id
+      }
+    }]
+  })
+  
+  if (valReview.length) {
+    res.status(500)
+    return res.json({ message: "User already has a review for this spot" })
   }
   next();
 }
@@ -135,8 +168,7 @@ router.get('/current', requireLogIn, async (req, res) => {
 router.post('/:spotId/images', requireLogIn, spotCheck, canEdit, async (req, res) => {
   const { url, preview } = req.body;
 
-  const spot = await Spot.findByPk(req.params.spotId);
-
+  const spot = req.spot;
 
   const newSpotImage = await SpotImage.create({
     spotId: spot.id, url, preview: preview === true ? true : false
@@ -146,6 +178,47 @@ router.post('/:spotId/images', requireLogIn, spotCheck, canEdit, async (req, res
     url: newSpotImage.url,
     preview: newSpotImage.preview
   })
+
+})
+
+//Get all reviews for a spot
+router.get('/:spotId/reviews', spotCheck, async (req, res) => {
+
+  let reviews = await req.spot.getReviews({
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'firstName', 'lastName']
+      },
+      {
+        model: ReviewImage,
+        attributes: ['id', 'url']
+      }
+    ]
+  });
+
+  res.json({ Reviews: [...reviews] })
+})
+
+// Create a new review for a spot
+router.post('/:spotId/reviews', requireLogIn, spotCheck, revAuthBySpot, async (req, res) => {
+
+  const { review, stars } = req.body;
+
+  let error = validateReview(review, stars)
+  if (error) {
+    res.status(400)
+    return res.json({ message: "Bad Request", error: error })
+  }
+
+  const newReview = await Review.create({
+    userId: req.user.id,
+    spotId: req.spot.id,
+    review,
+    stars
+  })
+
+  return res.json(newReview)
 
 })
 
@@ -196,7 +269,7 @@ router.put('/:spotId', requireLogIn, spotCheck, canEdit, async (req, res) => {
     return res.json({ message: "Bad Request", error: error })
   }
 
-  let spot = await Spot.findByPk(req.params.spotId);
+  let spot = req.spot;
 
   if (address) {
     spot.address = address;
@@ -233,7 +306,7 @@ router.put('/:spotId', requireLogIn, spotCheck, canEdit, async (req, res) => {
 
 // Delete a spot
 router.delete('/:spotId', requireLogIn, spotCheck, canEdit, async (req, res) => {
-  const spot = await Spot.findByPk(req.params.spotId)
+  const spot = req.spot;
   await spot.destroy();
   return res.json({ message: "Successfully deleted" })
 })
@@ -262,7 +335,6 @@ router.get('/', async (req, res) => {
         // break
       }
     }
-
 
     //build new spot(s) for res
     const updatedSpot = {
