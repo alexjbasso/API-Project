@@ -20,6 +20,7 @@ const revCheck = async (req, res, next) => {
   if (!review) {
     return res.status(404).json({ message: ('Review couldn\'t be found') })
   }
+
   req.review = review
   next();
 };
@@ -98,6 +99,11 @@ router.get('/current', requireLogIn, async (req, res) => {
 // Add image to a review
 router.post('/:reviewId/images', requireLogIn, revCheck, canEditRev, async (req, res) => {
 
+  const { url } = req.body;
+
+  const errors = {};
+  if (!url) errors.url = 'Must include URL';
+
   // Check if at image capacity
   const reviewFull = await Review.findByPk(req.params.reviewId, {
     include: {
@@ -108,14 +114,14 @@ router.post('/:reviewId/images', requireLogIn, revCheck, canEditRev, async (req,
   const reviewObj = reviewFull.toJSON();
   const imgCount = reviewObj.ReviewImages.length;
 
-  if (imgCount >= 10) {
+  if (imgCount >= 10) errors.url = 'Maximum number of images for this resource was reached';
+
+  if (Object.keys(errors).length > 0) {
     res.status(403);
-    return res.json({ message: "Maximum number of images for this resource was reached" });
+    return res.json({ message: "Bad Request", errors })
   }
 
   // Build new image
-
-  const { url } = req.body;
 
   const newReviewImage = await ReviewImage.create({
     reviewId: req.review.id,

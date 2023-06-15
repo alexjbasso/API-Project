@@ -39,8 +39,6 @@ const validateBooking = async (startDate, endDate, req) => {
     }
   });
 
-
-
   const start = (new Date(((new Date(startDate)).toDateString()))).getTime()
   const end = (new Date(((new Date(endDate)).toDateString()))).getTime()
 
@@ -48,8 +46,8 @@ const validateBooking = async (startDate, endDate, req) => {
   if (!startDate) error.startDate = "Start date is required"
   if (isNaN(start)) error.startDate = "Start date must be valid date";
   if (!endDate) error.endDate = "End date is required"
-  if (isNaN(end)) error.endDate = "End date must be valid date";
   if (endDate <= startDate) error.endDate = "End date cannot be on or before start date"
+  if (isNaN(end)) error.endDate = "End date must be valid date";
 
   const bookingsList = [];
   bookings.forEach(booking => {

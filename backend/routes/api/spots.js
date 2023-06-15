@@ -28,8 +28,9 @@ const validateSpot = (address, city, state, country, lat, lng, name, description
   if (Number.isNaN(lng)) error.lng = "Longitude is not valid"
   if (!name) error.name = "Name is required"
   if (name && name.length > 50) error.name = "Name must be less than 50 characters"
-  if (!description) error.description = "Price per day is required"
+  if (!description) error.description = "Description is required"
   if (!price) error.price = "Price per day is required"
+  if (price && price < 0) error.price = "Price is invalid"
 
   if (Object.keys(error).length > 0) {
     return error
@@ -56,8 +57,8 @@ const validateBooking = async (startDate, endDate, req) => {
   if (!startDate) error.startDate = "Start date is required"
   if (isNaN(start)) error.startDate = "Start date must be valid date";
   if (!endDate) error.endDate = "End date is required"
-  if (isNaN(end)) error.endDate = "End date must be valid date";
   if (endDate <= startDate) error.endDate = "endDate cannot be on or before startDate"
+  if (isNaN(end)) error.endDate = "End date must be valid date";
 
   const bookings = await Booking.findAll({
     where: {
@@ -75,9 +76,11 @@ const validateBooking = async (startDate, endDate, req) => {
     const currentEnd = (new Date(((new Date(booking.endDate)).toDateString()))).getTime()
     if (start >= currentStart && start <= currentEnd) {
       error.startDate = 'Start date conflicts with an existing booking'
+      error.message = 'Sorry, this spot is already booked for the specified dates'
     }
     if (end >= currentStart && end <= currentEnd) {
       error.endDate = 'End date conflicts with an existing booking'
+      error.message = 'Sorry, this spot is already booked for the specified dates'
     }
   })
 
@@ -271,8 +274,9 @@ router.post('/:spotId/bookings', requireLogIn, spotCheck, async (req, res) => {
 
   let error = await validateBooking(startDate, endDate, req)
   if (error) {
-    res.status(400)
-    return res.json({ message: "Bad Request", error: error })
+    const message = error.message ? error.message : "Bad Request";
+    delete error.message;
+    return res.json({ message, error: error })
   }
 
   const newBooking = await Booking.create({
@@ -289,6 +293,22 @@ router.post('/:spotId/bookings', requireLogIn, spotCheck, async (req, res) => {
 // Create a new image for a spot
 router.post('/:spotId/images', requireLogIn, spotCheck, canEdit, async (req, res) => {
   const { url, preview } = req.body;
+
+  let errors = {};
+  if (!url) {
+    errors.url = 'Must include URL'
+  }
+
+  console.log(preview)
+
+  if (preview !== true && preview !== false) {
+    errors.preview = "Preview setting must be specified"
+  }
+
+  if (Object.keys(errors).length > 0) {
+    res.status(400)
+    return res.json({ message: "Bad Request", errors })
+  }
 
   const spot = req.spot;
 
