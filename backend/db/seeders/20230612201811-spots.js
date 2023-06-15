@@ -16,11 +16,11 @@ module.exports = {
         city: 'Juneau',
         state: 'Alaska',
         country: 'USA',
-        lat: 1,
-        lng: 1,
+        lat: 58,
+        lng: 134,
         name: 'Test 1',
         description: 'Test 1 description',
-        price: 101
+        price: 100
       },
       {
         ownerId: 2,
@@ -28,11 +28,11 @@ module.exports = {
         city: 'Nashville',
         state: 'Tennessee',
         country: 'USA',
-        lat: 2,
-        lng: 2,
+        lat: 36,
+        lng: 86,
         name: 'Test 2',
         description: 'Test 2 description',
-        price: 102
+        price: 150
       },
       {
         ownerId: 3,
@@ -40,11 +40,11 @@ module.exports = {
         city: 'Fargo',
         state: 'North Dakota',
         country: 'USA',
-        lat: 3,
-        lng: 3,
+        lat: 46,
+        lng: 96,
         name: 'Test 3',
         description: 'Test 3 description',
-        price: 103
+        price: 200
       }
     ], {});
   },
