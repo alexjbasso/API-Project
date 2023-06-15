@@ -78,7 +78,7 @@ router.get('/current', requireLogIn, async (req, res) => {
     let spotImages = review.Spot.SpotImages
     spotImages.forEach(image => {
       if (image.preview === true) {
-        review.Spot.url = image.url
+        review.Spot.previewImage = image.url
       }
     })
     delete review.Spot.SpotImages
@@ -108,7 +108,7 @@ router.post('/:reviewId/images', requireLogIn, revCheck, canEditRev, async (req,
   const reviewObj = reviewFull.toJSON();
   const imgCount = reviewObj.ReviewImages.length;
 
-  if (imgCount > 10) {
+  if (imgCount >= 10) {
     res.status(403);
     return res.json({ message: "Maximum number of images for this resource was reached" });
   }

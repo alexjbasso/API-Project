@@ -142,23 +142,8 @@ const revAuthBySpot = async (req, res, next) => {
 
 // Test route
 router.get('/test', async (req, res) => {
-
-  const spots = await Spot.findAll({
-    include: [
-      { model: Review },
-      {
-        model: SpotImage,
-        where: {
-          preview: true
-        }
-      }
-    ]
-  });
-
-  return res.json(spots)
-
+  return res.json('Test route')
 })
-
 
 // Get current users's spots
 router.get('/current', requireLogIn, async (req, res) => {
@@ -170,6 +155,12 @@ router.get('/current', requireLogIn, async (req, res) => {
       }
     ]
   });
+
+
+  if (!spots.length) {
+    return res.json("You have no spots!")
+  }
+
 
   let updatedSpots = [];
 
@@ -185,7 +176,6 @@ router.get('/current', requireLogIn, async (req, res) => {
         // break
       }
     }
-
 
     //build new spot(s) for res
 
@@ -307,6 +297,7 @@ router.post('/:spotId/images', requireLogIn, spotCheck, canEdit, async (req, res
   })
 
   res.json({
+    id: newSpotImage.id,
     url: newSpotImage.url,
     preview: newSpotImage.preview
   })
@@ -364,8 +355,6 @@ router.get('/:spotId', spotCheck, async (req, res) => {
       { model: Review }
     ]
   })
-
-
 
   const { average, count } = findAvgRating(spot);
 
@@ -463,12 +452,12 @@ router.get('/', async (req, res) => {
   if (minPrice && (minPrice < 0)) queryErrors.minPrice = 'Minimum price must be greater than or equal to 0';
   if (maxPrice && (maxPrice < 0)) queryErrors.maxPrice = 'Maximum price must be greater than or equal to 0';
 
-    if (Object.keys(queryErrors).length > 0) {
-      res.status(400)
-      const message = queryErrors.message ? queryErrors.message : "Bad Request";
-      delete queryErrors.message;
-      return res.json({ message, error: queryErrors })
-    }
+  if (Object.keys(queryErrors).length > 0) {
+    res.status(400)
+    const message = queryErrors.message ? queryErrors.message : "Bad Request";
+    delete queryErrors.message;
+    return res.json({ message, error: queryErrors })
+  }
 
   // Handle filters
   if (!page) {
@@ -498,16 +487,13 @@ router.get('/', async (req, res) => {
     [Op.between]: [minLat, maxLat],
   };
   where.lng = {
-    [Op.between]: [minLat, maxLat]
+    [Op.between]: [minLng, maxLng]
   }
   where.price = {
     [Op.between]: [minPrice, maxPrice]
   }
 
-
-
   // Query
-
   const spots = await Spot.findAll({
     ...pagination,
     include: [
@@ -571,6 +557,7 @@ router.post('/', requireLogIn, async (req, res) => {
     ownerId: req.user.id, address, city, state, country, lat, lng, name, description, price
   });
 
+  res.status(201)
   return res.json(newSpot);
 
 })

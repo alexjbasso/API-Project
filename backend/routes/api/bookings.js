@@ -185,8 +185,7 @@ router.delete('/:bookingId', requireLogIn, bookingCheck, async (req, res) => {
 
   booking.destroy();
 
-
-  res.json({ message: "Successfully tested" })
+  res.json({ message: "Successfully deleted" })
 })
 
 
