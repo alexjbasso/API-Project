@@ -1,5 +1,6 @@
 // Server
 const express = require('express');
+const { Op } = require("sequelize");
 
 // Validation
 const { check } = require('express-validator');
@@ -8,7 +9,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 // Authorization
 const { restoreUser, requireAuth, requireLogIn } = require("../../utils/auth");
 
-
+// Router
 const router = express.Router();
 
 // Imports
@@ -445,12 +446,80 @@ router.delete('/:spotId', requireLogIn, spotCheck, canEdit, async (req, res) => 
 // Get all spots
 router.get('/', async (req, res) => {
 
+  // Query filters
+  let { page, size, maxLat, minLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+
+  page = parseInt(page);
+  size = parseInt(size);
+
+  // check errors
+  let queryErrors = {};
+  if (page && (page < 1 || page > 10)) queryErrors.page = 'Page must be between 1 and 10';
+  if (size && (size < 1 || size > 20)) queryErrors.size = 'Size must be between 1 and 10';
+  if (maxLat && (maxLat < -90 || maxLat > 90)) queryErrors.maxLat = 'Maximum latitude is invalid';
+  if (minLat && (minLat < -90 || minLat > 90)) queryErrors.minLat = 'Minimum latitude is invalid';
+  if (minLng && (minLng < -180 || minLng > 180)) queryErrors.minLng = 'Minimum longitude is invalid';
+  if (maxLng && (maxLng < -180 || maxLng > 180)) queryErrors.maxLng = 'Maximum longitude is invalid';
+  if (minPrice && (minPrice < 0)) queryErrors.minPrice = 'Minimum price must be greater than or equal to 0';
+  if (maxPrice && (maxPrice < 0)) queryErrors.maxPrice = 'Maximum price must be greater than or equal to 0';
+
+    if (Object.keys(queryErrors).length > 0) {
+      res.status(400)
+      const message = queryErrors.message ? queryErrors.message : "Bad Request";
+      delete queryErrors.message;
+      return res.json({ message, error: queryErrors })
+    }
+
+  // Handle filters
+  if (!page) {
+    page = 1;
+  }
+
+  if (!size) {
+    size = 20;
+  }
+
+  let pagination = {};
+
+  if (page >= 1 && size >= 1) {
+    pagination.limit = size;
+    pagination.offset = (page - 1) * size;
+  }
+
+  where = {};
+  if (!maxLat) maxLat = 90;
+  if (!minLat) minLat = -90;
+  if (!minLng) minLng = -180;
+  if (!maxLng) maxLng = 180;
+  if (!minPrice) minPrice = 0;
+  if (!maxPrice) maxPrice = 9999999;
+
+  where.lat = {
+    [Op.between]: [minLat, maxLat],
+  };
+  where.lng = {
+    [Op.between]: [minLat, maxLat]
+  }
+  where.price = {
+    [Op.between]: [minPrice, maxPrice]
+  }
+
+
+
+  // Query
+
   const spots = await Spot.findAll({
+    ...pagination,
     include: [
       { model: Review },
       { model: SpotImage }
-    ]
+    ],
+    where
   });
+
+  if (spots.length === 0) {
+    return res.json("No results found")
+  }
 
   let updatedSpots = [];
 
@@ -480,7 +549,9 @@ router.get('/', async (req, res) => {
   }
 
   return res.json({
-    Spots: updatedSpots
+    Spots: updatedSpots,
+    page,
+    size
   })
 }
 )
