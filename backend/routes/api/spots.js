@@ -223,7 +223,7 @@ router.get('/:spotId/bookings', requireLogIn, spotCheck, async (req, res) => {
 
   const resBookings = [];
 
-  if (req.user.id === ownerId) {
+  if (req.user.id !== ownerId) {
 
     bookingsList.forEach(booking => {
 
@@ -381,8 +381,9 @@ router.get('/:spotId', spotCheck, async (req, res) => {
   return res.json({
     id: spot.id,
     ownerId: spot.ownerId,
-    addres: spot.addres,
+    address: spot.address,
     city: spot.city,
+    state: spot.state,
     country: spot.country,
     lat: spot.lat,
     lng: spot.lng,

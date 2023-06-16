@@ -164,7 +164,7 @@ router.put('/:bookingId', requireLogIn, bookingCheck, async (req, res) => {
 
   await booking.save();
 
-  res.json(bookingEnd)
+  res.json(booking)
 
 })
 
