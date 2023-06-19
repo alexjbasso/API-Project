@@ -1,8 +1,14 @@
 # `Airbnb Clone`
 
-## Database Schema Design
+## Live Link
+https://ajb-w13-project.onrender.com
 
-`<insert database schema design here>`
+## Summary
+An Airbnb clone that allows users to access and modify spots, bookings, and reviews.
+
+ ## Database Schema Design
+
+![db-schema](./airbnb_dbdiagram.png)
 
 ## API Documentation
 
