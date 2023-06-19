@@ -24,7 +24,7 @@ const bookingCheck = async (req, res, next) => {
 
   if (booking.dataValues.userId !== req.user.id) {
     res.status(403);
-    return res.json({message: "You do not have permission to edit this booking"})
+    return res.json({ message: "You do not have permission to edit this booking" })
   }
 
   req.booking = booking
@@ -145,10 +145,17 @@ router.put('/:bookingId', requireLogIn, bookingCheck, async (req, res) => {
   const { startDate, endDate } = req.body;
   const currentDate = (new Date(((new Date()).toDateString()))).getTime()
   const bookingEnd = (new Date(((new Date(booking.dataValues.endDate)).toDateString()))).getTime()
+  const newStart = (new Date(((new Date(startDate)).toDateString()))).getTime()
+  const newEnd = (new Date(((new Date(endDate)).toDateString()))).getTime()
 
   if (currentDate > bookingEnd) {
     res.status(403);
     return res.json({ message: "Past bookings cannot be modified" })
+  }
+
+  if (currentDate > newStart || currentDate > newEnd) {
+    res.status(403);
+    return res.json({ message: "Date cannot be in the past" })
   }
 
   let error = await validateBooking(startDate, endDate, req)
