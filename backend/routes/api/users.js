@@ -66,10 +66,10 @@ router.post(
     // Storing non-sensitive info in object to pass later with token
     const safeUser = {
       id: user.id,
-      email: user.email,
-      username: user.username,
       firstName: user.firstName,
-      lastName: user.lastName
+      lastName: user.lastName,
+      email: user.email,
+      username: user.username
     };
 
     // Sets token with new user object

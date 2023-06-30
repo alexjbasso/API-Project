@@ -36,10 +36,10 @@ router.get(
     if (user) {
       const safeUser = {
         id: user.id,
-        email: user.email,
-        username: user.username,
         firstName: user.firstName,
-        lastName: user.lastName
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username
       };
       return res.json({
         user: safeUser
@@ -79,10 +79,10 @@ router.post(
     // If the password does match, then create a user object of the user logging in
     const safeUser = {
       id: user.id,
-      email: user.email,
-      username: user.username,
       firstName: user.firstName,
-      lastName: user.lastName
+      lastName: user.lastName,
+      email: user.email,
+      username: user.username
     };
 
     // Set token cookie with authorized user object
