@@ -301,8 +301,6 @@ router.post('/:spotId/images', requireLogIn, spotCheck, canEdit, async (req, res
     errors.url = 'Must include URL'
   }
 
-  console.log(preview)
-
   if (preview !== true && preview !== false) {
     errors.preview = "Preview setting must be specified"
   }
