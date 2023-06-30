@@ -1,18 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function (req, res) {
-  res.json("Please give me an A");
-});
-
-router.get("/api/csrf/restore", (req, res) => {
-  // Set cookie 'XSRF-TOKEN' on response to value of req.csrfToken()
-  const csrfToken = req.csrfToken();
-  res.cookie("XSRF-TOKEN", csrfToken);
-  res.status(200).json({
-    'XSRF-Token': csrfToken
-  });
-});
+// router.get("/api/csrf/restore", (req, res) => {
+//   // Set cookie 'XSRF-TOKEN' on response to value of req.csrfToken()
+//   const csrfToken = req.csrfToken();
+//   res.cookie("XSRF-TOKEN", csrfToken);
+//   res.status(200).json({
+//     'XSRF-Token': csrfToken
+//   });
+// });
 
 // Prefix all routes with /api
 const apiRouter = require('./api');
@@ -25,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
   // Serve the frontend's index.html file at the root route
   router.get('/', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.sendFile(
+    res.sendFile(
       path.resolve(__dirname, '../../frontend', 'build', 'index.html')
     );
   });
@@ -36,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
   // Serve the frontend's index.html file at all other routes NOT starting with /api
   router.get(/^(?!\/?api).*/, (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.sendFile(
+    res.sendFile(
       path.resolve(__dirname, '../../frontend', 'build', 'index.html')
     );
   });
@@ -46,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
 if (process.env.NODE_ENV !== 'production') {
   router.get('/api/csrf/restore', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.json({});
+    res.status(201).json({});
   });
 }
 
