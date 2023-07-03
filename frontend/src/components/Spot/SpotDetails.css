@@ -1,0 +1,15 @@
+.images-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.other-spot-images {
+  border: red dotted 2px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+
+.other-spot-image {
+  height: 100px;
+}

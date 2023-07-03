@@ -12,38 +12,38 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         ownerId: 1,
-        address: '101 Main Street',
-        city: 'Juneau',
-        state: 'Alaska',
+        address: '742 Evergreen Terrace',
+        city: 'Springfield',
+        state: 'TV',
         country: 'USA',
         lat: 58,
         lng: 134,
-        name: 'Test 1',
-        description: 'Test 1 description',
+        name: '4 bedroom surburban palace',
+        description: 'A perfectly cromulent place to stay',
         price: 100
       },
       {
         ownerId: 2,
-        address: '102 Main Street',
-        city: 'Nashville',
-        state: 'Tennessee',
+        address: '201 Cobblestone Lane',
+        city: 'Bedrock',
+        state: 'AZ',
         country: 'USA',
         lat: 36,
         lng: 86,
-        name: 'Test 2',
-        description: 'Test 2 description',
+        name: 'Modern Stone Age getaway',
+        description: 'Have a gay old time at this rustic getaway',
         price: 150
       },
       {
         ownerId: 3,
-        address: '103 Main Street',
-        city: 'Fargo',
-        state: 'North Dakota',
+        address: '124 Conch Street',
+        city: 'Bikini Bottom',
+        state: 'OC',
         country: 'USA',
         lat: 46,
         lng: 96,
-        name: 'Test 3',
-        description: 'Test 3 description',
+        name: 'A pineapple under the sea',
+        description: 'If nautical nonsense be something you wish, then book a stay at this underwater paradise',
         price: 200
       }
     ], {});
