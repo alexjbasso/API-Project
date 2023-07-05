@@ -56,7 +56,6 @@ function SpotForm({ spot, formType }) {
     if (spot.error || spot.errors) {
       setErrors(spot.error);
     } else {
-      console.log("created spot:", spot)
       history.push(`/spots/${spot.spot.id}`);
     };
   }

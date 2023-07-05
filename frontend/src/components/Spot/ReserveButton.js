@@ -17,7 +17,7 @@ function ReserveButton({ spot, reviews }) {
           </span>
           <div className="review-rating">
             <i className="fa-solid fa-star" />
-            <span>{spot.numReviews === 0 ? "New" : `${spot.avgStarRating.toFixed(2)} • ${spot.numReviews} ${spot.numReviews === 1 ? "Review" : "Reviews"}`}</span>
+            <span>{spot.numReviews === 0 ? "New" : `${spot?.avgStarRating.toFixed(2)} • ${spot.numReviews} ${spot.numReviews === 1 ? "Review" : "Reviews"}`}</span>
           </div>
         </div>
         <button onClick={handleClick}>Reserve</button>

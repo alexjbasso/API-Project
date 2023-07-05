@@ -3,7 +3,8 @@ import { csrfFetch } from "./csrf";
 /** Action Type Constants: */
 export const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS';
 export const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
-export const CREATE_REVIEW = 'reviews/CREATE_REVIEW'
+export const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
+export const CLEAR_REVIEWS = 'reviews/CLEAR_REVIEWS';
 
 
 /**  Action Creators: */
@@ -21,6 +22,12 @@ export const deleteReviewAction = (reviewId) => ({
   type: DELETE_REVIEW,
   reviewId
 });
+
+export const clearReviewsAction = () => {
+  console.log("hi from clear reviews action")
+  return { type: CLEAR_REVIEWS }
+}
+
 
 /** Thunk Action Creators: */
 export const fetchReviews = (spotId) => async (dispatch) => {
@@ -75,14 +82,14 @@ const reviewsReducer = (state = {}, action) => {
       });
       return reviewsObj;
     case CREATE_REVIEW:
-      return {...state, [action.review.id]: action.review}
+      return { ...state, [action.review.id]: action.review }
     case DELETE_REVIEW:
       const newReviews = { ...state };
-      // console.log("before:", newReviews)
-      // console.log("action.review:", action.reviewId)
       delete newReviews[action.reviewId];
-      // console.log("after", newReviews)
       return newReviews;
+    case CLEAR_REVIEWS:
+      console.log("clear reducer:", action)
+      return {};
     default:
       return state;
   }

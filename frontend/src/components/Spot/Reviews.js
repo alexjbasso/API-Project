@@ -12,13 +12,13 @@ function Reviews({ reviews, spot, user }) {
 
   if (keys.includes("numReviews")) {
     if (reviews.length > 0) {
-      console.log(reviews, spot)
+      console.log("reviews that should be > 0:", reviews)
       const sortedReviews = reviews.toReversed();
       return (
         <div className="review-container">
           <div className="review-rating">
             <i className="fa-solid fa-star" />
-            <span>{spot.avgStarRating.toFixed(2)} • {spot.numReviews} {reviews.length === 1 ? "Review" : "Reviews"}</span>
+            <span>{spot.avgStarRating?.toFixed(2)} • {spot.numReviews} {reviews.length === 1 ? "Review" : "Reviews"}</span>
           </div>
           {user && !reviewUsers.includes(user.id) && spot.ownerId !== user.id ? <OpenModalButton
             buttonText="Post Your Review"
@@ -48,6 +48,10 @@ function Reviews({ reviews, spot, user }) {
             <i className="fa-solid fa-star" />
             <span>New</span>
           </div>
+          {user && !reviewUsers.includes(user.id) && spot.ownerId !== user.id ? <OpenModalButton
+            buttonText="Post Your Review"
+            modalComponent={<CreateReviewModal spot={spot} />}
+          /> : null}
           {user && spot.ownerId !== user.id ? <h1>Be the first to post a review!</h1> : null}
         </div>
       )

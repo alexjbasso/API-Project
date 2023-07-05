@@ -33,18 +33,6 @@ module.exports = {
       {
         reviewId: 6,
         url: '#'
-      },
-      {
-        reviewId: 7,
-        url: '#'
-      },
-      {
-        reviewId: 8,
-        url: '#'
-      },
-      {
-        reviewId: 9,
-        url: '#'
       }
     ], {});
   },
