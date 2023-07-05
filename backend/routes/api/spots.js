@@ -29,6 +29,7 @@ const validateSpot = (address, city, state, country, lat, lng, name, description
   if (!name) error.name = "Name is required"
   if (name && name.length > 50) error.name = "Name must be less than 50 characters"
   if (!description) error.description = "Description is required"
+  if (description && description.length < 30) error.description = "Description needs 30 or more characters"
   if (!price) error.price = "Price per day is required"
   if (price && price < 0) error.price = "Price is invalid"
 

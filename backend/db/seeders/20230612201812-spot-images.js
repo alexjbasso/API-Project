@@ -37,13 +37,13 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: '',
-        preview: false
+        url: 'https://static.wikia.nocookie.net/flinstones/images/0/01/Flintstone_Home_-_Ladies%27_Night_at_the_Lodge_-_The_Flintstones.jpg',
+        preview: true
       },
       {
         spotId: 2,
         url: '#2b',
-        preview: true
+        preview: false
       },
       {
         spotId: 2,
@@ -52,18 +52,28 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: '#3a',
+        url: 'https://static.wikia.nocookie.net/crossovia/images/e/e4/Spongebob-pineapple-house.webp',
+        preview: true
+      },
+      {
+        spotId: 3,
+        url: 'https://i.pinimg.com/474x/86/4b/80/864b8017cfbbff1a2554b89918df514f.jpg',
         preview: false
       },
       {
         spotId: 3,
-        url: '#3b',
+        url: 'https://i.pinimg.com/originals/bf/68/66/bf686658c7a3a826a8152ea51e4a88fb.gif',
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: 'https://www.spriters-resource.com/resources/sheets/150/153352.png',
         preview: false
       },
       {
         spotId: 3,
         url: '#3c',
-        preview: true
+        preview: false
       }
     ], {});
   },

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSpotDetails } from "../../store/spotDetails";
-import { fetchReviews } from "../../store/reviews";
+import { getSpotByIdThunk } from "../../store/spots";
+import { getReviewsThunk } from "../../store/reviews";
 import Reviews from "./Reviews";
 import SpotDetails from "./SpotDetails";
 
@@ -11,12 +11,12 @@ function SpotPage() {
   const { spotId } = useParams();
 
   const spot = useSelector((state) =>
-    state.spotDetails[spotId] ? state.spotDetails[spotId] : null
+    state.spots.singleSpot[spotId] ? state.spots.singleSpot[spotId] : null
   );
 
-  const reviews = useSelector((state) =>
-    state.reviews[spotId] ? state.reviews[spotId] : null
-  );
+  const reviews = Object.values(useSelector((state) =>
+    state.reviews ? state.reviews : null
+  ));
 
   const user = useSelector((state) =>
     state.session.user ? state.session.user : null
@@ -25,14 +25,14 @@ function SpotPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchSpotDetails(spotId))
-    dispatch(fetchReviews(spotId))
-  }, [dispatch, spotId])
+    dispatch(getSpotByIdThunk(spotId))
+    dispatch(getReviewsThunk(spotId))
+  }, [dispatch, spotId, reviews.length])
 
-  if (spot && reviews)
+  if (spot)
     return (
       <div className="spot-page-container">
-        <SpotDetails spot={spot} reviews={reviews} />
+        {<SpotDetails spot={spot} reviews={reviews} />}
         <Reviews reviews={reviews} spot={spot} user={user} />
       </div>
     )
