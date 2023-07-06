@@ -12,7 +12,6 @@ function Reviews({ reviews, spot, user }) {
 
   if (keys.includes("numReviews")) {
     if (reviews.length > 0) {
-      console.log("reviews that should be > 0:", reviews)
       const sortedReviews = reviews.toReversed();
       return (
         <div className="review-container">

@@ -42,12 +42,12 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: '#2b',
+        url: '#2.b',
         preview: false
       },
       {
         spotId: 2,
-        url: '#2c',
+        url: '#2.c',
         preview: false
       },
       {
@@ -72,7 +72,7 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: '#3c',
+        url: '#3.c',
         preview: false
       }
     ], {});

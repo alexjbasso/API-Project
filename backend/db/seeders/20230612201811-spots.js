@@ -31,7 +31,7 @@ module.exports = {
         lat: 36,
         lng: 86,
         name: 'Modern Stone Age getaway',
-        description: 'Have a gay old time at this rustic getaway',
+        description: 'Have a gay old time at this rustic chalet',
         price: 150
       },
       {

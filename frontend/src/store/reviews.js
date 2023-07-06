@@ -24,7 +24,6 @@ export const deleteReviewAction = (reviewId) => ({
 });
 
 export const clearReviewsAction = () => {
-  console.log("hi from clear reviews action")
   return { type: CLEAR_REVIEWS }
 }
 
@@ -88,7 +87,6 @@ const reviewsReducer = (state = {}, action) => {
       delete newReviews[action.reviewId];
       return newReviews;
     case CLEAR_REVIEWS:
-      console.log("clear reducer:", action)
       return {};
     default:
       return state;

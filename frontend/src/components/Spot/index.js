@@ -30,9 +30,7 @@ function SpotPage() {
   }, [dispatch, spotId, reviews.length])
 
   useEffect(() => {
-    console.log("before return")
     return () => {
-      console.log("after return")
       dispatch(clearReviewsAction())
     }
   }, [dispatch])
