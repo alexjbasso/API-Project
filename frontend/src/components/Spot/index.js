@@ -5,6 +5,7 @@ import { getSpotByIdThunk } from "../../store/spots";
 import { getReviewsThunk, clearReviewsAction } from "../../store/reviews";
 import Reviews from "./Reviews";
 import SpotDetails from "./SpotDetails";
+import "./Spot.css"
 
 function SpotPage() {
 

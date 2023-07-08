@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { createReviewThunk } from '../../store/reviews';
 import StarsRatingInput from './StarsRatingInput';
+import "./index.css"
 
 function CreateReviewModal({ spot }) {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function CreateReviewModal({ spot }) {
 
   return (
     <div className="create-review-wrapper">
-      <form>
+      <form id="create-review-form">
         <h2>How was your stay?</h2>
         <textarea
           id="review-text-area"
@@ -42,7 +43,7 @@ function CreateReviewModal({ spot }) {
             rating={rating} />
           <span>Stars</span>
         </div>
-        <button disabled={reviewText.length < 10 || rating < 1} onClick={handleSubmit}>Submit Your Review</button>
+        <button id="submit-review-button" disabled={reviewText.length < 10 || rating < 1} onClick={handleSubmit}>Submit Your Review</button>
       </form>
     </div>
 

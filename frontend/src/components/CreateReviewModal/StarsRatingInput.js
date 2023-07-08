@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import "./index.css"
 
 const StarsRatingInput = ({ rating, disabled, onChange }) => {
   const [activeRating, setActiveRating] = useState(rating);
@@ -16,7 +15,7 @@ const StarsRatingInput = ({ rating, disabled, onChange }) => {
         onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
         onClick={() => { if (!disabled) onChange(1) }}
       >
-        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star rating-star"></i>
       </div>
       <div
         className={activeRating >= 2 ? "filled" : "empty"}
@@ -24,7 +23,7 @@ const StarsRatingInput = ({ rating, disabled, onChange }) => {
         onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
         onClick={() => { if (!disabled) onChange(2) }}
       >
-        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star rating-star"></i>
       </div>
       <div
         className={activeRating >= 3 ? "filled" : "empty"}
@@ -32,7 +31,7 @@ const StarsRatingInput = ({ rating, disabled, onChange }) => {
         onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
         onClick={() => { if (!disabled) onChange(3) }}
       >
-        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star rating-star"></i>
       </div>
       <div
         className={activeRating >= 4 ? "filled" : "empty"}
@@ -40,7 +39,7 @@ const StarsRatingInput = ({ rating, disabled, onChange }) => {
         onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
         onClick={() => { if (!disabled) onChange(4) }}
       >
-        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star rating-star"></i>
       </div>
       <div
         className={activeRating >= 5 ? "filled" : "empty"}
@@ -48,7 +47,7 @@ const StarsRatingInput = ({ rating, disabled, onChange }) => {
         onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
         onClick={() => { if (!disabled) onChange(5) }}
       >
-        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star rating-star"></i>
       </div>
     </div>
   );

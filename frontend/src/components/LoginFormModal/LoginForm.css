@@ -1,0 +1,43 @@
+.login-wrapper {
+  padding: 5px 10px 10px 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px
+}
+
+.login-fields-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%
+}
+
+.login-field {
+  width: 97%;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#login-button {
+  width: 100%;
+  padding: 10px;
+  box-shadow: 3px 2px 2px rgb(104, 104, 104);
+}
+
+#login-button:enabled {
+  color: white;
+  background-color: red;
+}
+
+.demo-user-login {
+  background-color: white;
+  border: none;
+  text-decoration: underline;
+  color: rgb(13, 179, 179);
+}

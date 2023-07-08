@@ -1,0 +1,20 @@
+.reviews-container {
+  margin-top: 10px;
+}
+
+.review-container>h4 {
+  margin: 10px 0px 3px 0px;
+}
+
+.review-container>h5 {
+  margin: 0px 0px 10px 0px;
+  color: grey;
+}
+
+.review-container>p {
+  font-size: 15px;
+}
+
+.post-review-container {
+  margin-top: 5px;
+}

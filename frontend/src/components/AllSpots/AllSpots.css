@@ -1,0 +1,13 @@
+.spot-grid-body {
+  /* border: 3px dashed blue; */
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  max-width: 830px;
+  margin: 15px auto;
+}
+
+.spot-comp-wrapper {
+  display: flex;
+}

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
-import LandingSpotDetails from "./LandingSpotDetails";
+import SpotContainer from "./SpotContainer";
+import './AllSpots.css'
 
 
 function AllSpots() {
@@ -17,12 +18,16 @@ function AllSpots() {
   }, [dispatch]);
 
   return (
-    <>{
-      spots.map((spot) => (
-        <LandingSpotDetails spot={spot} type="all-spots"/>
-      ))
-    }
-    </>
+    <div className="spot-grid-body">
+      {
+        spots.map((spot) => (
+          <div className="spot-comp-wrapper">
+            <SpotContainer spot={spot} type="all-spots" />
+          </div>
+
+        ))
+      }
+    </div>
 
   )
 }

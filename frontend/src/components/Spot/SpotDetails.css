@@ -1,15 +1,67 @@
+.spot-details-container {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.spot-name {
+  margin: 10px 0px;
+}
+
+.location-text {
+  font-size: 17px;
+  margin: 0px 0px 10px 0px;
+}
+
+
 .images-container {
   display: flex;
   flex-direction: row;
+  height: 275px;
+  gap: 3px;
+}
+
+.preview-image {
+  width: 50%;
 }
 
 .other-spot-images {
-  border: red dotted 2px;
+  width: 50%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0.5rem;
+  grid-template-areas:
+  "div div"
+  "div div";
+  grid-gap: 0.3rem;
+  border: 1px solid black;
+}
+
+.images-container img {
+  object-fit: cover;
+}
+
+.image-wrapper {
+  border: 2px dashed blue;
+  overflow: hidden;
+  /* width: 245px; */
+  height: 131px;
+  /* width: 15rem; */
+  width: 100%;
 }
 
 .other-spot-image {
-  height: 100px;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.hosts {
+  margin-top: 0;
+}
+
+.spot-text-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px
 }

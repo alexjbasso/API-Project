@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUserAllSpotsThunk } from "../../store/spots";
 import { Link } from "react-router-dom";
-import LandingSpotDetails from "../AllSpots/LandingSpotDetails";
+import SpotContainer from "../AllSpots/SpotContainer";
+import './ManageSpots.css'
 
 function ManageSpots() {
 
@@ -10,26 +11,37 @@ function ManageSpots() {
     useSelector((state) => (state.spots.allSpots ? state.spots.allSpots : []))
   );
 
+  const user = useSelector((state) =>
+    state.session.user ? state.session.user : null
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCurrentUserAllSpotsThunk());
+    if (user) dispatch(getCurrentUserAllSpotsThunk());
   }, [dispatch]);
 
+  if (user) {
     return (
-      <div className="user-spots-wrapper">
+      <div className="manage-spots-page-wrapper">
         <h1>Manage Your Spots</h1>
 
-        {spots.length ? null : <Link to="/spots/new"><button>Create a New Spot</button></Link>}
+        <div className="user-spots-wrapper">
+          {spots.length ? null : <Link to="/spots/new"><button class="spot-button">Create a New Spot</button></Link>}
+          {
+            spots.map((spot) => (
+              <SpotContainer spot={spot} type="manage" />
+            ))
+          }
+        </div>
 
-        {
-          spots.map((spot) => (
-            <LandingSpotDetails spot={spot} type="manage" />
-          ))
-        }
       </div>
     )
-  } 
+  } else return (
+    <h1>You need to be logged in to access this page.</h1>
+  )
+
+}
 
 
 export default ManageSpots;

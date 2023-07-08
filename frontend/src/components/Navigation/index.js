@@ -9,21 +9,27 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className='navbar'>
-      <div>
+      <div id='home-button'>
         <NavLink exact to="/">
-          <i className="fa-solid fa-tv"></i>
+          <i className="fa-solid fa-tv"> ToonBnb</i>
         </NavLink>
       </div>
       <div className='nav-right'>
-        {isLoaded && (
-          <div>
+
+        {isLoaded && sessionUser ? (
+          <>
+            <li>
+              <NavLink to="/spots/new"
+                id="nav-create-spot">
+                Create a New Spot
+              </NavLink>
+            </li>
             <ProfileButton user={sessionUser} />
-          </div>
-        )}
-        {sessionUser && (
-          <NavLink to="/spots/new">
-            Create a New Spot
-          </NavLink>
+          </>
+        ) : (
+          <li>
+            <ProfileButton />
+          </li>
         )}
       </div>
     </div>

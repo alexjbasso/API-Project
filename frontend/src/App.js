@@ -11,6 +11,7 @@ import SpotPage from "./components/Spot";
 import CreateSpot from "./components/CreateSpot"
 import UpdateSpot from "./components/UpdateSpot";
 import ManageSpots from "./components/ManageSpots";
+import NotFound from "./components/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,10 +27,11 @@ function App() {
       <Switch>
         <Route exact path="/" component={AllSpots} />
         <Route path="/spots/new" component={CreateSpot} />
-        <Route path="/spots/current" component={ManageSpots}/>
+        <Route path="/spots/current" component={ManageSpots} />
         <Route path="/spots/:spotId/edit" component={UpdateSpot} />
         <Route path="/spots/:spotId" component={SpotPage} />
         <Route path="/reviews/current" />
+        <Route component={NotFound} />
       </Switch>
     </>
   );

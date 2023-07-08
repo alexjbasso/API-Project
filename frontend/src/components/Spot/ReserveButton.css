@@ -1,0 +1,40 @@
+.reserve-container {
+  border: 1px solid black;
+  width: 300px;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.review-sum {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+.review-rating {
+  display: inline-block;
+}
+
+.rate {
+  display: flex;
+  gap: 2px;
+}
+
+.spot-price {
+  font-size: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.night-span {
+  display: flex;
+  align-items: flex-end;
+}
+
+.reserve-button {
+  background-color: red;
+  width: 100%;
+  padding: 10px;
+}

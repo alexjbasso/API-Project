@@ -10,22 +10,32 @@ const UpdateSpot = () => {
     state.spots.singleSpot[spotId] ? state.spots.singleSpot[spotId] : null
   );
 
+  const user = useSelector((state) =>
+    state.session.user ? state.session.user : null
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSpotByIdThunk(spotId));
   }, [dispatch, spotId]);
 
-  if (!spot) return (<></>);
+  if (!spot) return (<h1>Spot does not exist</h1>);
 
-  return (
-    Object.keys(spot).length > 1 && (
-      <SpotForm
-        spot={spot}
-        formType="Update Spot"
-      />
+  console.log(spot.ownerId, user.id)
+
+  if (spot.ownerId === user.id) {
+    return (
+      Object.keys(spot).length > 1 && (
+        <SpotForm
+          spot={spot}
+          formType="Update Spot"
+        />
+      )
     )
-  )
+  } else {
+    return <h1>You do not have permission to do that.</h1>
+  }
 };
 
 export default UpdateSpot;

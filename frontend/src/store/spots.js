@@ -49,9 +49,14 @@ export const getCurrentUserAllSpotsThunk = () => async (dispatch) => {
 };
 
 export const getSpotByIdThunk = (spotId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/spots/${spotId}`);
-  const spot = await res.json();
-  return dispatch(getSpotByIdAction(spot));
+  try {
+    const res = await csrfFetch(`/api/spots/${spotId}`);
+    const spot = await res.json();
+    return dispatch(getSpotByIdAction(spot));
+  } catch(err) {
+    return null;
+  }
+  
 };
 
 export const createSpotThunk = (formData) => async (dispatch) => {

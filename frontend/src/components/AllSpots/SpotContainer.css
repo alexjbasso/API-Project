@@ -1,0 +1,45 @@
+.spot-container {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.image-container {
+  width: 100%;
+  height: 200px;
+}
+
+.image-container>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spot-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.location-revsum {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.location {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rating-info {
+  display: flex;
+}
+
+.price-info {
+  font-weight: bold;
+}

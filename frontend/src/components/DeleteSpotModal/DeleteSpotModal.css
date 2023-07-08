@@ -1,4 +1,4 @@
-.signup-wrapper {
+.delete-spot-wrapper {
   padding: 5px 10px 10px 10px;
   width: 300px;
   display: flex;
@@ -8,34 +8,26 @@
   gap: 10px
 }
 
-.signup-fields-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%
+.delete-spot-wrapper>h2 {
+  margin: 6px 6px 0px 6px
 }
 
-.signup-field {
-  width: 97%;
+p {
+  margin: 0px
 }
 
-
-.signup-button-container {
-  display: flex;
-  justify-content: center;
-}
-
-#signup-button {
+.delete-button {
   width: 100%;
   padding: 10px;
   box-shadow: 3px 2px 2px rgb(104, 104, 104);
 }
 
-#signup-button:enabled {
+#delete-spot {
   color: white;
   background-color: red;
 }
 
-.error {
-  color: red;
+#keep-spot {
+  color: white;
+  background-color: grey;
 }

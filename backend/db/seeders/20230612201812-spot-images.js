@@ -42,12 +42,12 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: '#2.b',
+        url: 'https://www.realtor.com/wp-content/uploads/2015/09/11802652_851167121633815_4659965730943563884_o.jpg',
         preview: false
       },
       {
         spotId: 2,
-        url: '#2.c',
+        url: 'https://lostmediawiki.com/w/images/thumb/9/94/Flintstones_2013_4.jpeg/729px-Flintstones_2013_4.jpeg',
         preview: false
       },
       {
@@ -72,7 +72,7 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: '#3.c',
+        url: 'https://static.wikia.nocookie.net/spongebob/images/4/4f/Sleepy_Time_032.png',
         preview: false
       }
     ], {});
