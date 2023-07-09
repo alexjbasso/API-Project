@@ -51,7 +51,7 @@ function SignupFormModal() {
         {errors.lastName && <p className="error">{errors.lastName}</p>}
         {errors.password && <p className="error">{errors.password}</p>}
         {errors.confirmPassword && (
-          <p>{errors.confirmPassword}</p>
+          <p className="error">{errors.confirmPassword}</p>
         )}
         <label>
           <input

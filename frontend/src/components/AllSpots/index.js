@@ -7,7 +7,7 @@ import './AllSpots.css'
 
 function AllSpots() {
 
-  const spots = Object.values(
+  let spots = Object.values(
     useSelector((state) => (state.spots.allSpots ? state.spots.allSpots : []))
   );
 
@@ -17,19 +17,30 @@ function AllSpots() {
     dispatch(getAllSpotsThunk());
   }, [dispatch]);
 
-  return (
-    <div className="spot-grid-body">
-      {
-        spots.map((spot) => (
-          <div className="spot-comp-wrapper">
-            <SpotContainer spot={spot} type="all-spots" />
-          </div>
 
-        ))
-      }
-    </div>
+  if (spots.length) {
+    spots = spots.reverse()
 
-  )
+    return (
+
+      <div className="spot-grid-body">
+        {
+          spots.map((spot) => (
+            <div className="spot-comp-wrapper">
+              <SpotContainer spot={spot} type="all-spots" />
+            </div>
+
+          ))
+        }
+      </div>
+
+    )
+  } else {
+    return (
+      <h1>No spots! Log in and create your own.</h1>
+    )
+  }
+
 }
 
 export default AllSpots;
