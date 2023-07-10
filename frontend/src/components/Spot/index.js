@@ -36,13 +36,16 @@ function SpotPage() {
     }
   }, [dispatch])
 
-  if (spot)
+  if (spot) {
     return (
       <div className="spot-page-container">
         {<SpotDetails spot={spot} reviews={reviews} />}
         <Reviews reviews={reviews} spot={spot} user={user} />
       </div>
     )
+  } else {
+    return (<h1>Spot not found</h1>)
+  }
 
 }
 
