@@ -96,7 +96,7 @@ function SpotForm({ spot, formType }) {
             <div className="spot-field">
               <div className="field-label">
                 <label htmlFor="country">Country</label>
-                {errors.country ? <p className="errors">{errors.country}</p>: null}
+                {errors.country ? <p className="errors">{errors.country}</p> : null}
               </div>
 
               <input
@@ -110,7 +110,7 @@ function SpotForm({ spot, formType }) {
             <div className="spot-field">
               <div className="field-label">
                 <label htmlFor="address">Street Address</label>
-                {errors.address ? <p className="errors">{errors.address}</p>: null}
+                {errors.address ? <p className="errors">{errors.address}</p> : null}
               </div>
 
               <input
@@ -125,7 +125,7 @@ function SpotForm({ spot, formType }) {
               <div className="spot-field" id="city-field-container">
                 <div className="field-label">
                   <label htmlFor="city">City</label>
-                  {errors.city ? <p className="errors">{errors.city}</p>: null}
+                  {errors.city ? <p className="errors">{errors.city}</p> : null}
                 </div>
                 <div id="city-field">
                   <input
@@ -143,7 +143,7 @@ function SpotForm({ spot, formType }) {
               <div className="spot-field">
                 <div className="field-label">
                   <label htmlFor="state">State</label>
-                  {errors.state ? <p className="errors">{errors.state}</p>: null}
+                  {errors.state ? <p className="errors">{errors.state}</p> : null}
                 </div>
                 <input
                   id="state"
@@ -168,7 +168,7 @@ function SpotForm({ spot, formType }) {
             onChange={e => setDescription(e.target.value)}
             value={description}
           />
-         {errors.description ? <p className="errors">{errors.description}</p>: null}
+          {errors.description ? <p className="errors">{errors.description}</p> : null}
         </div>
 
         <div id="create-title-section" className="spot-field lower-field">
@@ -181,7 +181,7 @@ function SpotForm({ spot, formType }) {
             onChange={e => setName(e.target.value)}
             value={name}
           />
-         {errors.name ? <p className="errors">{errors.name}</p>: null}
+          {errors.name ? <p className="errors">{errors.name}</p> : null}
         </div>
 
         <div id="create-price-section" className="spot-field lower-field">
@@ -232,7 +232,7 @@ function SpotForm({ spot, formType }) {
                 onChange={e => setImage2(e.target.value)}
                 value={image2}
               />
-              {errors.image2 ? <p className="errors">{errors.image2}</p>: null}
+              {errors.image2 ? <p className="errors">{errors.image2}</p> : null}
               <input
                 id="image-3"
                 type="text"
@@ -248,7 +248,7 @@ function SpotForm({ spot, formType }) {
                 onChange={e => setImage4(e.target.value)}
                 value={image4}
               />
-              {errors.image4 ? <p className="errors">{errors.image4}</p> : null}
+              {errors.image4 ? <p className="errors" id="img-err-4">{errors.image4}</p> : null}
             </div>
           </div>
           : null}

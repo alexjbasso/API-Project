@@ -94,9 +94,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 20px; */
   padding: 20px;
-  /* border-top: 1px solid black; */
 }
 
 #submit-button {
@@ -111,4 +109,8 @@ h3 {
 
 .errors {
   color: red;
+}
+
+#img-err-4 {
+  padding-bottom: 8px;
 }
