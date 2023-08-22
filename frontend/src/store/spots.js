@@ -56,7 +56,6 @@ export const getSpotByIdThunk = (spotId) => async (dispatch) => {
   } catch(err) {
     return null;
   }
-  
 };
 
 export const createSpotThunk = (formData) => async (dispatch) => {
