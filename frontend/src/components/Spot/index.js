@@ -15,6 +15,8 @@ function SpotPage() {
     state.spots.singleSpot[spotId] ? state.spots.singleSpot[spotId] : null
   );
 
+  console.log(spot)
+
   const reviews = Object.values(useSelector((state) =>
     state.reviews ? state.reviews : null
   ));
@@ -39,7 +41,7 @@ function SpotPage() {
   if (spot) {
     return (
       <div className="spot-page-container">
-        {<SpotDetails spot={spot} reviews={reviews} />}
+        {<SpotDetails spot={spot} reviews={reviews} user={user}/>}
         <Reviews reviews={reviews} spot={spot} user={user} />
       </div>
     )

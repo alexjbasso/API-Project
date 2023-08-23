@@ -28,7 +28,7 @@ function CreateReviewModal({ spot }) {
 
   return (
     <div className="create-review-wrapper">
-      <form id="create-review-form">
+      <form id="create-review-form" onSubmit={handleSubmit}>
         <h2>How was your stay?</h2>
         <textarea
           id="review-text-area"
@@ -43,7 +43,7 @@ function CreateReviewModal({ spot }) {
             rating={rating} />
           <span>Stars</span>
         </div>
-        <button id="submit-review-button" disabled={reviewText.length < 10 || rating < 1} onClick={handleSubmit}>Submit Your Review</button>
+        <button id="submit-review-button" disabled={reviewText.length < 10 || rating < 1} >Submit Your Review</button>
       </form>
     </div>
 

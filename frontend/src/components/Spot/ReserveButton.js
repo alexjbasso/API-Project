@@ -1,45 +1,28 @@
+import BookingFormButton from '../BookingFormButton';
+import BookingFormModal from '../BookingFormModal';
 import './ReserveButton.css'
 
-function ReserveButton({ spot, reviews }) {
+function ReserveButton({ spot, reviews, user }) {
 
-  const handleClick = (e) => {
-    e.preventDefault();
+  return (
+    <div className="reserve-container">
 
-    window.alert("Feature coming soon!")
-  }
-
-  const keys = Object.keys(spot)
-
-  if (keys.includes("numReviews")) {
-    return (
-      <div className="reserve-container">
-
-        <div className="review-sum">
-          <span className='rate'>
-            <span className='spot-price'>
-              ${spot.price}
-            </span>
-            <span className='night-span'>night</span>
+      <div className="review-sum">
+        <span className='rate'>
+          <span className='spot-price'>
+            ${spot.price}
           </span>
-          <div className="review-rating">
-            <i className="fa-solid fa-star" />
-            <span>{spot.numReviews === 0 ? "New" : `${spot?.avgStarRating.toFixed(2)} • ${spot.numReviews} ${spot.numReviews === 1 ? "review" : "reviews"}`}</span>
-          </div>
+          <span className='night-span'>night</span>
+        </span>
+        <div className="review-rating">
+          <i className="fa-solid fa-star" />
+          <span>{spot.numReviews === 0 ? "New" : `${spot?.avgStarRating.toFixed(2)} • ${spot.numReviews} ${spot.numReviews === 1 ? "review" : "reviews"}`}</span>
         </div>
-
-        <button className="reserve-button" onClick={handleClick}>Reserve</button>
       </div>
-    )
-  } else {
-    return null
-  }
-
-
-
-
+      {user && <BookingFormButton modalComponent={BookingFormModal({ spot })} buttonText={"Reserve"}></BookingFormButton>}
+    </div>
+  )
 }
-
-
 
 
 
