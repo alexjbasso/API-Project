@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
 import { useModal } from '../../context/Modal';
-import { createBookingThunk, editBookingThunk } from "../../store/bookings";
+import { createBookingThunk, deleteBookingThunk, editBookingThunk } from "../../store/bookings";
+import "./BookingFormModal.css"
 
 export default function BookingFormModal({ spot, booking }) {
   const dispatch = useDispatch();
@@ -33,32 +34,43 @@ export default function BookingFormModal({ spot, booking }) {
     }
   }
 
-  console.log("ErRoRs:", errors)
+  const handleBookingDelete = async (e) => {
+    e.preventDefault();
+    closeModal();
+    await dispatch(deleteBookingThunk(booking.id))
+    closeModal();
+  }
 
   return (
     <div id="booking-form-container">
-      <h2>{booking ? 'Edit Booking' : 'Create Booking'}</h2>
+      <h2 id="booking-header">{booking ? 'Edit' : 'Create'} Booking</h2>
       <div id="booking-errors-cont">
-        {Object.values(errors).map(error => <span>{error}</span>)}
+        {Object.values(errors).map(error => <span className="errors">{error}</span>)}
       </div>
       <form id="booking-form" onSubmit={handleBookingSubmit}>
-        <label htmlFor="start-date">Start Date</label>
-        <input
-          id="start-date"
-          type="date"
-          onChange={e => setStart(e.target.value)}
-          value={start}
-        />
 
-        <label htmlFor="end-date">End Date</label>
-        <input
-          id="end-date"
-          type="date"
-          onChange={e => setEnd(e.target.value)}
-          value={end}
-        />
+        <div className="booking-form-field">
+          <label htmlFor="start-date">Start Date</label>
+          <input
+            id="start-date"
+            type="date"
+            onChange={e => setStart(e.target.value)}
+            value={start}
+          />
+        </div>
 
-        <button type="submit" disabled={!start || !end} id="submit-form-button">Submit</button>
+        <div className="booking-form-field">
+          <label htmlFor="end-date">End Date</label>
+          <input
+            id="end-date"
+            type="date"
+            onChange={e => setEnd(e.target.value)}
+            value={end}
+          />
+        </div>
+
+        <button disabled={!start || !end} className="booking-button" id="submit-booking-button" onClick={handleBookingSubmit}>{booking ? 'Edit' : 'Create'} Booking</button>
+        {booking && <button className="booking-button" id="cancel-booking-button" onClick={handleBookingDelete}>Delete Booking</button>}
       </form>
     </div>
   )

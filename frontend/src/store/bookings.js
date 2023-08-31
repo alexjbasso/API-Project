@@ -140,9 +140,9 @@ const bookingReducer = (state = initialState, action) => {
     case EDIT_BOOKING:
       return { ...state, userBookings: { ...state.userBookings, [action.booking.id]: action.booking } };
     case DELETE_BOOKING:
-      const newBookings = { ...state.spotBookings };
+      const newBookings = { ...state.userBookings };
       delete newBookings[action.bookingId];
-      return { ...state, spotBookings: newBookings };
+      return { ...state, userBookings: newBookings };
     default:
       return state;
   }
