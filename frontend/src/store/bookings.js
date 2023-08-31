@@ -51,7 +51,7 @@ export const getAllBookingsForSpotThunk = (spotId) => async (dispatch) => {
 
   if (res.ok) {
     const bookings = await res.json();
-    return dispatch(loadBookingsAction(bookings, spotId))
+    return dispatch(loadBookingsAction(bookings.Bookings, spotId))
   }
 }
 
@@ -60,7 +60,7 @@ export const getAllBookingsForSpotThunk = (spotId) => async (dispatch) => {
 export const getBookingsOfUserThunk = () => async (dispatch) => {
   const res = await csrfFetch(`/api/bookings/current`);
   const bookings = await res.json();
-  dispatch(loadUserBookingsAction(bookings));
+  dispatch(loadUserBookingsAction(bookings.Bookings));
   return res;
 };
 
@@ -74,10 +74,11 @@ export const createBookingThunk = (spotId, formData) => async (dispatch) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     });
+    console.log("res:", res)
     const booking = await res.json();
     return dispatch(createBookingAction(booking));
   } catch (err) {
-    return await err.json()
+    return { errors: (await err.json()).error }
   }
 };
 
@@ -93,7 +94,7 @@ export const editBookingThunk = (bookingId, formData) => async (dispatch) => {
     const booking = await res.json();
     return dispatch(editBookingAction(booking));
   } catch (err) {
-    return await err.json()
+    return { errors: await err.json() }
   }
 };
 
@@ -110,20 +111,20 @@ export const deleteBookingThunk = (bookingId) => async (dispatch) => {
 
 /** Reducer: */
 const initialState = {
-  allBookings: {},
+  spotBookings: {},
   userBookings: {},
   singleBooking: {}
 }
 const bookingReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_BOOKINGS:
-      const allBookingsObj = {};
+      const spotBookingsObj = {};
       if (action.bookings) {
         action.bookings.forEach((booking) => {
-          allBookingsObj[booking.id] = booking;
+          spotBookingsObj[booking.id] = booking;
         });
       }
-      return { ...state, allBookings: allBookingsObj };
+      return { ...state, spotBookings: spotBookingsObj };
     case LOAD_USER_BOOKINGS:
       const userBookingsObj = {};
       if (action.bookings) {
@@ -135,13 +136,13 @@ const bookingReducer = (state = initialState, action) => {
     case LOAD_BOOKING:
       return { ...state, singleBooking: { [action.booking.id]: action.booking } };
     case CREATE_BOOKING:
-      return { ...state, allBookings: { ...state.allBookings, [action.booking.id]: action.booking } };
+      return { ...state, userBookings: { ...state.userBookings, [action.booking.id]: action.booking } };
     case EDIT_BOOKING:
-      return { ...state, singleBooking: { [action.booking.id]: action.booking } };
+      return { ...state, userBookings: { ...state.userBookings, [action.booking.id]: action.booking } };
     case DELETE_BOOKING:
-      const newBookings = { ...state.allBookings };
+      const newBookings = { ...state.spotBookings };
       delete newBookings[action.bookingId];
-      return { ...state, allBookings: newBookings };
+      return { ...state, spotBookings: newBookings };
     default:
       return state;
   }

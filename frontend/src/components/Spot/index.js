@@ -15,8 +15,6 @@ function SpotPage() {
     state.spots.singleSpot[spotId] ? state.spots.singleSpot[spotId] : null
   );
 
-  console.log(spot)
-
   const reviews = Object.values(useSelector((state) =>
     state.reviews ? state.reviews : null
   ));

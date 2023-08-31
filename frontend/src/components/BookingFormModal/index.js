@@ -1,47 +1,51 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
 import { useModal } from '../../context/Modal';
-import { createBookingThunk } from "../../store/bookings";
+import { createBookingThunk, editBookingThunk } from "../../store/bookings";
 
-export default function BookingFormModal({ spot }) {
+export default function BookingFormModal({ spot, booking }) {
   const dispatch = useDispatch();
-  const [start, setStart] = useState("s");
-  const [end, setEnd] = useState("");
+  const [start, setStart] = useState(booking?.startDate);
+  const [end, setEnd] = useState(booking?.endDate);
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
-
-  // console.log("Start:", start)
-  // console.log("End:", end)
-  // console.log("!start || !end", !start || !end)
-  console.log("top modal component rendered")
 
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-
-    console.log("sub Start:", start)
-    console.log("sub End:", end)
+    let resBook;
 
     const formData = { startDate: start, endDate: end }
-    console.log("formdata:", formData)
-    // await dispatch(createBookingThunk(spot.id, formData))
 
-    closeModal();
+    if (booking) {
+      resBook = await dispatch(editBookingThunk(booking.id, formData))
+    }
+    else if (!booking) {
+      resBook = await dispatch(createBookingThunk(spot.id, formData))
+      console.log("resBook", resBook)
+    }
+
+    if (resBook.errors) {
+      setErrors(resBook.errors)
+    }
+    else {
+      closeModal();
+    }
   }
 
-  useEffect(() => {
-    console.log("Start:", start)
-    console.log("End:", end)
-  }, [start, end])
+  console.log("ErRoRs:", errors)
 
   return (
     <div id="booking-form-container">
-      <h2>Create Booking</h2>
+      <h2>{booking ? 'Edit Booking' : 'Create Booking'}</h2>
+      <div id="booking-errors-cont">
+        {Object.values(errors).map(error => <span>{error}</span>)}
+      </div>
       <form id="booking-form" onSubmit={handleBookingSubmit}>
-        <label htmlFor="start-date">Start Date{start}</label>
+        <label htmlFor="start-date">Start Date</label>
         <input
           id="start-date"
-          type="text"
+          type="date"
           onChange={e => setStart(e.target.value)}
           value={start}
         />
@@ -49,12 +53,12 @@ export default function BookingFormModal({ spot }) {
         <label htmlFor="end-date">End Date</label>
         <input
           id="end-date"
-          type="text"
+          type="date"
           onChange={e => setEnd(e.target.value)}
           value={end}
         />
 
-        <button type="submit" id="submit-form-button">Submit</button>
+        <button type="submit" disabled={!start || !end} id="submit-form-button">Submit</button>
       </form>
     </div>
   )

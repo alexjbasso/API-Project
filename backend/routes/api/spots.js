@@ -231,6 +231,7 @@ router.get('/:spotId/bookings', requireLogIn, spotCheck, async (req, res) => {
     bookingsList.forEach(booking => {
 
       const resObj = {
+        id: booking.id,
         spotId: req.params.spotId,
         startDate: booking.startDate,
         endDate: booking.endDate
@@ -279,6 +280,7 @@ router.post('/:spotId/bookings', requireLogIn, spotCheck, async (req, res) => {
   if (error) {
     const message = error.message ? error.message : "Bad Request";
     delete error.message;
+    res.status(400)
     return res.json({ message, error: error })
   }
 
