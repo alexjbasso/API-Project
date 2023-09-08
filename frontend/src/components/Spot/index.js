@@ -38,9 +38,11 @@ function SpotPage() {
 
   if (spot) {
     return (
-      <div className="spot-page-container">
-        {<SpotDetails spot={spot} reviews={reviews} user={user}/>}
-        <Reviews reviews={reviews} spot={spot} user={user} />
+      <div id="spot-page-cont">
+        <div className="spot-page-container">
+          <SpotDetails spot={spot} reviews={reviews} user={user} />
+          <Reviews reviews={reviews} spot={spot} user={user} />
+        </div>
       </div>
     )
   } else {

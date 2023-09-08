@@ -1,5 +1,8 @@
 .manage-spots-page-wrapper {
   padding: 0px 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user-spots-wrapper {
