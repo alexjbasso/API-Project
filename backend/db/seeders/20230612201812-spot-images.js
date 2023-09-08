@@ -74,7 +74,67 @@ module.exports = {
         spotId: 3,
         url: 'https://static.wikia.nocookie.net/spongebob/images/4/4f/Sleepy_Time_032.png',
         preview: false
-      }
+      },
+      {
+        spotId: 4,
+        url: 'https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/9/9f/TreeHouseINT.png',
+        preview: true
+      },
+      {
+        spotId: 4,
+        url: 'https://i.pinimg.com/originals/89/fc/cc/89fccca43accec7535e4f2ae6498922f.jpg',
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: 'https://cdna.artstation.com/p/assets/images/images/062/652/916/large/ellie-cairns-betterrenders-0015.jpg',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://static.wikia.nocookie.net/warner-bros-entertainment/images/d/df/Professor_Utonium%27s_House.jpeg',
+        preview: true
+      },
+      {
+        spotId: 5,
+        url: 'https://static.wikia.nocookie.net/powerpuff/images/9/9c/Vlcsnap-2015-09-01-22h34m32s223.png',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://static.wikia.nocookie.net/powerpuff/images/8/82/Utonium_residence_-_Living_Room.PNG',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://static.wikia.nocookie.net/powerpuff/images/9/9a/Utonium_residence_-_Utonium%27s_Room.PNG',
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: 'https://static.wikia.nocookie.net/powerpuff/images/0/03/Utonium_residence_-_Utonium%27s_Lab.PNG',
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: 'https://i.ytimg.com/vi/X1nM__RkMP4/maxresdefault.jpg',
+        preview: true
+      },
+      {
+        spotId: 6,
+        url: 'https://static.wikia.nocookie.net/disney/images/4/40/Carl%27s_house_New.jpg',
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: 'https://www.wired.com/images_blogs/wiredscience/2009/05/pixar-up-frame1.jpg',
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: 'https://static.wikia.nocookie.net/disney-x/images/5/50/Paradise_Falls.jpg',
+        preview: false
+      },
     ], {});
   },
 

@@ -45,7 +45,43 @@ module.exports = {
         name: 'A pineapple under the sea',
         description: 'If nautical nonsense be something you wish, then book a stay at this underwater paradise',
         price: 200
-      }
+      },
+      {
+        ownerId: 4,
+        address: '2010 Adventure Road',
+        city: 'Grass Lands',
+        state: 'CK',
+        country: 'Ooo',
+        lat: 46,
+        lng: 96,
+        name: 'Magical tree house',
+        description: 'This gorgeous arboreal fort includes a living room, a bedroom, a kitchen, a pond, a well, a bathroom, a chicken coop, a treasure room, an attic, a storage cave/garage, a secret place, and a wide look-out view.',
+        price: 100
+      },
+      {
+        ownerId: 4,
+        address: '107 Pokey Oaks South',
+        city: 'Townsville',
+        state: 'CN',
+        country: 'USA',
+        lat: 46,
+        lng: 96,
+        name: 'Quaint family home',
+        description: 'This cute suburban home boasts multiple bedrooms perfect for a girls night and a fully functional science laboratory',
+        price: 100
+      },
+      {
+        ownerId: 4,
+        address: 'A113 Main Street',
+        city: 'Paradise Falls',
+        state: 'PX',
+        country: 'USA',
+        lat: 46,
+        lng: 96,
+        name: 'Beautiful aerostatic mobile home',
+        description: 'Adventure is out there! Come find it during a stay at this highly mobile spot.',
+        price: 150
+      },
     ], {});
   },
 
