@@ -11,7 +11,8 @@
 }
 
 #create-review-form>h2 {
-  margin: 6px
+  margin: 6px 0px 15px 0px;
+  color: #F46D25;
 }
 
 #review-text-area {
@@ -32,7 +33,7 @@
 }
 
 .rating-input .filled {
-  color: black;
+  color: #F46D25;
 }
 
 .rating-input .empty {
@@ -47,5 +48,5 @@
 
 #submit-review-button:enabled {
   color: white;
-  background-color: red;
+  background-color: #5dd607;
 }

@@ -6,8 +6,9 @@
 
 #booking-header {
   margin: 0px;
-  margin-bottom: 5px;
+  margin-top: 5px;
   text-align: center;
+  color: #F46D25;;
 }
 
 #booking-form {
@@ -30,5 +31,5 @@
 
 #submit-booking-button:enabled {
   color: white;
-  background-color: red;
+  background-color: #5dd607;
 }

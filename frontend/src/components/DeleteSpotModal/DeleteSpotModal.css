@@ -12,8 +12,13 @@
   margin: 6px 6px 0px 6px
 }
 
-p {
-  margin: 0px
+.delete-spot-wrapper h2 {
+  color: #F46D25;
+}
+.delete-spot-wrapper p {
+  margin: 0px;
+  color: #F46D25;
+  text-align: center;
 }
 
 .delete-button {

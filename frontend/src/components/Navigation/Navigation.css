@@ -4,6 +4,8 @@
   justify-content: center;
   border-bottom: 1px solid grey;
   width: 100%;
+  height: 65px;
+  background-color: #5dd607;
 }
 
 .navbar {
@@ -16,6 +18,7 @@
   /* border: 1px solid rgb(255, 0, 0); */
   /* padding: 0px 120px 10px 120px; */
   width: 1040px;
+  font-size: 20px;
 }
 
 .nav-right {
@@ -32,6 +35,7 @@
 .dropdown-items {
   border: 2px solid black;
   background-color: white;
+  color: #F46D25;
   display: flex;
   flex-direction: column;
   padding: 5px 10px;
@@ -39,8 +43,10 @@
 }
 
 .auth-links {
-  margin-left: -75px;
+  margin-left: -90px;
   margin-top: -1.3em;
+  font-size: 17px;
+  width: 70px;
 }
 
 .user-info,
@@ -50,6 +56,10 @@
 
 .manage-spots-link-wrapper {
   padding-bottom: 2px;
+}
+
+.manage-spots-link {
+  color: #F46D25;
 }
 
 .profile-dropdown.hidden {

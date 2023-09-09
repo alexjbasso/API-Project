@@ -5,7 +5,8 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px
+  gap: 10px;
+  background-color: #00caed;
 }
 
 .review-sum {
@@ -13,6 +14,7 @@
   justify-content: space-between;
   gap: 50px;
 }
+
 .review-rating {
   display: inline-block;
 }
@@ -34,7 +36,9 @@
 }
 
 .reserve-button {
-  background-color: red;
+  background-color: #5dd607;
   width: 100%;
   padding: 10px;
+  font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+  color: white;
 }

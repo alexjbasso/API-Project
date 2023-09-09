@@ -1,5 +1,6 @@
-h1 {
+.login-wrapper>h1 {
   margin: 10px 0px;
+  color: #F46D25;
 }
 
 .login-wrapper {
@@ -9,7 +10,8 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px
+  gap: 10px;
+  
 }
 
 .login-fields-wrapper {
@@ -32,11 +34,12 @@ h1 {
   width: 100%;
   padding: 10px;
   box-shadow: 3px 2px 2px rgb(104, 104, 104);
+  font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
 }
 
 #login-button:enabled {
   color: white;
-  background-color: red;
+  background-color: #5dd607;
 }
 
 .demo-user-login {
@@ -44,4 +47,5 @@ h1 {
   border: none;
   text-decoration: underline;
   color: rgb(13, 179, 179);
+  font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
 }

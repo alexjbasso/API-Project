@@ -8,6 +8,11 @@
   gap: 10px
 }
 
+.signup-wrapper>h1 {
+  color: #F46D25;
+  margin: 10px 0px;
+}
+
 .signup-fields-wrapper {
   display: flex;
   flex-direction: column;
@@ -18,7 +23,6 @@
 .signup-field {
   width: 97%;
 }
-
 
 .signup-button-container {
   display: flex;
@@ -33,7 +37,9 @@
 
 #signup-button:enabled {
   color: white;
-  background-color: red;
+  background-color: #5dd607;
+  font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+
 }
 
 .error {

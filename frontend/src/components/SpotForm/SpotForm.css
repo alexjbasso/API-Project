@@ -11,6 +11,10 @@
   padding-bottom: 10px;
 }
 
+.create-spot-form>h1 {
+  text-align: center;
+}
+
 .spot-field {
   display: flex;
   flex-direction: column;
@@ -99,7 +103,7 @@ h3 {
 
 #submit-button {
   color: white;
-  background-color: red;
+  background-color: #5dd607;
 }
 
 #submit-button:disabled {

@@ -22,16 +22,20 @@ function AllSpots() {
     spots = spots.reverse()
 
     return (
+      <div id="home-page-wrapper">
+        <h1>Welcome to ToonBnb</h1>
+        <h2><em>Find where you belong</em></h2>
+        <div className="spot-grid-body">
+          {
+            spots.map((spot) => (
+              <div className="spot-comp-wrapper">
+                <SpotContainer spot={spot} type="all-spots" />
+              </div>
 
-      <div className="spot-grid-body">
-        {
-          spots.map((spot) => (
-            <div className="spot-comp-wrapper">
-              <SpotContainer spot={spot} type="all-spots" />
-            </div>
+            ))
+          }
+        </div>
 
-          ))
-        }
       </div>
 
     )

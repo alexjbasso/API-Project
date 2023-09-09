@@ -41,7 +41,6 @@ function CreateReviewModal({ spot }) {
           <StarsRatingInput
             onChange={onChange}
             rating={rating} />
-          <span>Stars</span>
         </div>
         <button id="submit-review-button" disabled={reviewText.length < 10 || rating < 1} >Submit Your Review</button>
       </form>
