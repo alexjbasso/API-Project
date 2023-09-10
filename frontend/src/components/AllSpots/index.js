@@ -41,7 +41,7 @@ function AllSpots() {
     )
   } else {
     return (
-      <h1>No spots! Log in and create your own.</h1>
+      <h1>Loading...</h1>
     )
   }
 
