@@ -13,10 +13,10 @@
 .spot-grid-body {
   /* border: 3px dashed blue; */
   display: flex;
-  gap: 10px;
+  gap: 20px;
   flex-wrap: wrap;
   /* justify-content: center; */
-  max-width: 1040px;
+  max-width: 1080px;
   margin: 15px auto;
 }
 
