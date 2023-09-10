@@ -135,6 +135,56 @@ module.exports = {
         url: 'https://static.wikia.nocookie.net/disney-x/images/5/50/Paradise_Falls.jpg',
         preview: false
       },
+      {
+        spotId: 7,
+        url: "https://static.wikia.nocookie.net/spongebob/images/f/f0/Patrick%27s_house.png",
+        preview: true
+      },
+      {
+        spotId: 7,
+        url: "https://static.wikia.nocookie.net/spongebob/images/6/6d/PatrickHouseOpenedStock.png",
+        preview: false
+      },
+      {
+        spotId: 7,
+        url: "https://pbs.twimg.com/media/DbttasKX4AA5gYg.jpg",
+        preview: false
+      },
+      {
+        spotId: 7,
+        url: "https://static.wikia.nocookie.net/spongebob/images/8/8f/Pat_the_Horse_001.png",
+        preview: false
+      },
+      {
+        spotId: 7,
+        url: "https://pbs.twimg.com/media/Dg4krO_UcAEcVzQ.jpg",
+        preview: false
+      },
+      {
+        spotId: 8,
+        url: "https://static.wikia.nocookie.net/spongebobgalaxy/images/2/23/Squidwards_House.png",
+        preview: true
+      },
+      {
+        spotId: 8,
+        url: "https://static.wikia.nocookie.net/spongebob/images/3/3e/Enchanted_Tiki_Dreams_004.png",
+        preview: false
+      },
+      {
+        spotId: 8,
+        url: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c2047868-eb3f-45a9-84ac-a12510bfedd9/dg0h1zx-b3e5b87b-36f9-4628-bb7e-7023fa828636.png/v1/fill/w_1131,h_707,q_70,strp/squidwards_bedroom__by_dracoawesomeness_dg0h1zx-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODAwIiwicGF0aCI6IlwvZlwvYzIwNDc4NjgtZWIzZi00NWE5LTg0YWMtYTEyNTEwYmZlZGQ5XC9kZzBoMXp4LWIzZTViODdiLTM2ZjktNDYyOC1iYjdlLTcwMjNmYTgyODYzNi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.mNF7f2_JS1LnooeiRTNb8eIZ3AVD24I9Sluw5ODba2c",
+        preview: false
+      },
+      {
+        spotId: 8,
+        url: "https://i.imgur.com/cR5W6f5.jpg",
+        preview: false
+      },
+      {
+        spotId: 8,
+        url: "https://64.media.tumblr.com/e9d54b2ebc2723623d47c771028c0ee7/tumblr_pykg36MqW51wbov75o2_400.jpg",
+        preview: false
+      },
     ], {});
   },
 

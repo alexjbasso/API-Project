@@ -82,6 +82,30 @@ module.exports = {
         description: 'Adventure is out there! Come find it during a stay at this highly mobile spot.',
         price: 150
       },
+      {
+        ownerId: 4,
+        address: '120 Conch Street',
+        city: 'Bikini Bottom',
+        state: 'OC',
+        country: 'USA',
+        lat: 46,
+        lng: 96,
+        name: 'Rugged lithic pad',
+        description: "Simple single-family dwelling perfect for those who wanna get closer to nature",
+        price: 50
+      },
+      {
+        ownerId: 4,
+        address: '122 Conch Street',
+        city: 'Bikini Bottom',
+        state: 'OC',
+        country: 'USA',
+        lat: 46,
+        lng: 96,
+        name: 'Moai-inspired home in friendly neighborhood',
+        description: "You'll find absolutely no annoying neighbors during a nice relaxing stay at this beautiful underwater tribute to Easter Island",
+        price: 175
+      },
     ], {});
   },
 
