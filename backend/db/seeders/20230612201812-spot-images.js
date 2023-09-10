@@ -12,7 +12,7 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        url: 'https://static.wikia.nocookie.net/simpsons/images/6/65/800px-742_Evergreen_Terrace.png',
+        url: 'https://i.imgur.com/ZH5pc88.jpg',
         preview: true
       },
       {
@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: 'https://static.wikia.nocookie.net/flinstones/images/0/01/Flintstone_Home_-_Ladies%27_Night_at_the_Lodge_-_The_Flintstones.jpg',
+        url: 'https://i.imgur.com/SwVMfv0.jpg',
         preview: true
       },
       {
@@ -62,7 +62,7 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: 'https://static.wikia.nocookie.net/crossovia/images/e/e4/Spongebob-pineapple-house.webp',
+        url: 'https://i.imgur.com/J9ozxrJ.jpg',
         preview: true
       },
       {
@@ -82,7 +82,7 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: 'https://static.wikia.nocookie.net/spongebob/images/4/4f/Sleepy_Time_032.png',
+        url: 'https://i.imgur.com/sX07YK6.jpg',
         preview: false
       },
       {
@@ -110,9 +110,10 @@ module.exports = {
         url: 'https://pbs.twimg.com/ext_tw_video_thumb/1641779652086865920/pu/img/xCBxuDetcbhAzMhW.jpg',
         preview: false
       },
+      // Utonium
       {
         spotId: 5,
-        url: 'https://static.wikia.nocookie.net/warner-bros-entertainment/images/d/df/Professor_Utonium%27s_House.jpeg',
+        url: 'https://i.imgur.com/vEpFDgv.jpg',
         preview: true
       },
       {
@@ -135,6 +136,7 @@ module.exports = {
         url: 'https://static.wikia.nocookie.net/powerpuff/images/0/03/Utonium_residence_-_Utonium%27s_Lab.PNG',
         preview: false
       },
+      // Frederickson
       {
         spotId: 6,
         url: 'https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/05/up-movie-carls-house-social-feature.jpg',
@@ -142,7 +144,7 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: 'https://static.wikia.nocookie.net/disney/images/4/40/Carl%27s_house_New.jpg',
+        url: 'https://i.imgur.com/cDWFA49.jpg',
         preview: false
       },
       {
@@ -152,7 +154,7 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: 'https://static.wikia.nocookie.net/disney-x/images/5/50/Paradise_Falls.jpg',
+        url: 'https://i.imgur.com/1cY8t4s.jpg',
         preview: false
       },
       {
@@ -160,9 +162,10 @@ module.exports = {
         url: 'https://i.pinimg.com/originals/21/fe/2f/21fe2f2839aac4bad4c4db1f1877fff0.jpg',
         preview: false
       },
+      // Star
       {
         spotId: 7,
-        url: "https://static.wikia.nocookie.net/spongebob/images/f/f0/Patrick%27s_house.png",
+        url: "https://i.imgur.com/GNNdbWP.jpg",
         preview: true
       },
       {
@@ -185,14 +188,15 @@ module.exports = {
         url: "https://pbs.twimg.com/media/Dg4krO_UcAEcVzQ.jpg",
         preview: false
       },
+      // Tentacles
       {
         spotId: 8,
-        url: "https://static.wikia.nocookie.net/spongebobgalaxy/images/2/23/Squidwards_House.png",
+        url: "https://i.imgur.com/LyO3Q1O.jpg",
         preview: true
       },
       {
         spotId: 8,
-        url: "https://static.wikia.nocookie.net/spongebob/images/3/3e/Enchanted_Tiki_Dreams_004.png",
+        url: "https://i.imgur.com/aC4asea.jpg",
         preview: false
       },
       {
@@ -208,6 +212,188 @@ module.exports = {
       {
         spotId: 8,
         url: "https://64.media.tumblr.com/e9d54b2ebc2723623d47c771028c0ee7/tumblr_pykg36MqW51wbov75o2_400.jpg",
+        preview: false
+      },
+      // Elsa
+      {
+        spotId: 9,
+        url: "http://www.rotoscopers.com/wp-content/uploads/2013/10/1239196_10151914675692184_571540977_o.jpg",
+        preview: true
+      },
+      {
+        spotId: 9,
+        url: "https://i.ytimg.com/vi/WbcS2epXItI/maxresdefault.jpg",
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: "https://media1.popsugar-assets.com/files/thumbor/Rf6AefO5F2nAqL1nxDdNni2rGDQ/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/02/10/917/n/3019466/dca5874d5e41c47fc0cba9.43556459_MCDFROZ_EC03/i/Elsa-ice-palace-changes-color-reflect-her-feelings.jpg",
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: "https://blenderartists.org/uploads/default/original/4X/2/4/5/245b20d7e312b1656ad7363e191fee4e9adc2dca.jpg",
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: "https://disneycruiselineblog.com/wp-content/uploads/2013/11/Disney-Frozen-Elsa-Ice-Palace-Chandelier.jpg",
+        preview: false
+      },
+      // Griffin
+      {
+        spotId: 10,
+        url: "https://i.imgur.com/TI9CaQS.jpg",
+        preview: true
+      },
+      {
+        spotId: 10,
+        url: "https://virtualbackgrounds.site/wp-content/uploads/2022/03/family-guy-living-room.jpg",
+        preview: false
+      },
+      {
+        spotId: 10,
+        url: "https://pbs.twimg.com/media/EV0rQYpXYAMpWQ6.jpg",
+        preview: false
+      },
+      {
+        spotId: 10,
+        url: "https://i.ytimg.com/vi/OepbkuCtZmc/maxresdefault.jpg",
+        preview: false
+      },
+      {
+        spotId: 10,
+        url: "https://i.imgur.com/0kj9WvE.jpg",
+        preview: false
+      },
+      // Catdog
+      {
+        spotId: 11,
+        url: "https://64.media.tumblr.com/e529d8de9c3c54e2435d555df41aa6ef/tumblr_p3r43a0rMN1rvsfh9o2_1280.jpg",
+        preview: true
+      },
+      {
+        spotId: 11,
+        url: "https://64.media.tumblr.com/e675fa1197e19a7e7c3874c274cc189e/tumblr_p3r43a0rMN1rvsfh9o6_1280.jpg",
+        preview: false
+      },
+      {
+        spotId: 11,
+        url: "https://64.media.tumblr.com/d3fcb28c61445b4ff63b78b92ecf461b/tumblr_p3r43a0rMN1rvsfh9o1_1280.jpg",
+        preview: false
+      },
+      {
+        spotId: 11,
+        url: "https://64.media.tumblr.com/42842ffbc3a6d6435c2d1c0fe25115cb/tumblr_p3r43a0rMN1rvsfh9o3_1280.jpg",
+        preview: false
+      },
+      {
+        spotId: 11,
+        url: "https://64.media.tumblr.com/318966842996a2645773a540d84fa818/tumblr_p3r43a0rMN1rvsfh9o7_1280.jpg",
+        preview: false
+      },
+      // Universe
+      {
+        spotId: 12,
+        url: "https://i.imgur.com/UJ4xx3l.jpeg",
+        preview: true
+      },
+      {
+        spotId: 12,
+        url: "https://i.imgur.com/anDg8Lc.jpeg",
+        preview: false
+      },
+      {
+        spotId: 12,
+        url: "https://i.imgur.com/IvXmKxK.jpg",
+        preview: false
+      },
+      {
+        spotId: 12,
+        url: "https://i.imgur.com/kjUGqG1.jpg",
+        preview: false
+      },
+      {
+        spotId: 12,
+        url: "https://i.pinimg.com/originals/6a/a5/03/6aa5030169b7ecd7ef52158893c62575.png",
+        preview: false
+      },
+      // Pines
+      {
+        spotId: 13,
+        url: "https://i.imgur.com/ekS7m9w.jpg",
+        preview: true
+      },
+      {
+        spotId: 13,
+        url: "https://paintbynumberscanvas.com/wp-content/uploads/2020/10/mystery-shack-interior-paint-by-number.jpg",
+        preview: false
+      },
+      {
+        spotId: 13,
+        url: "https://i.imgur.com/5SEMDWx.jpg",
+        preview: false
+      },
+      {
+        spotId: 13,
+        url: "https://i.imgur.com/fyB7JLs.jpg",
+        preview: false
+      },
+      {
+        spotId: 13,
+        url: "https://cdn.80.lv/api/upload/content/aa/images/62a8747598895/widen_1840x0.jpg",
+        preview: false
+      },
+      // Shortman
+      {
+        spotId: 14,
+        url: "https://res.cloudinary.com/sagacity/image/upload/c_crop,h_1679,w_3000,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1080/HA_1001_03_BG_BoardingHouseExtAcrossTheStreetA_color_x9fd0p.jpg",
+        preview: true
+      },
+      {
+        spotId: 14,
+        url: "https://i.imgur.com/mhqF491.jpg",
+        preview: false
+      },
+      {
+        spotId: 14,
+        url: "https://i.imgur.com/GT1fYLF.jpg",
+        preview: false
+      },
+      {
+        spotId: 14,
+        url: "https://i.imgur.com/bkFGhfJ.jpg",
+        preview: false
+      },
+      {
+        spotId: 14,
+        url: "https://i.imgur.com/i2fEWJt.jpg",
+        preview: false
+      },
+      // Pops
+      {
+        spotId: 15,
+        url: "https://i.imgur.com/z5eKDU2.jpg",
+        preview: true
+      },
+      {
+        spotId: 15,
+        url: "https://i.imgur.com/XvtXPZh.jpg",
+        preview: false
+      },
+      {
+        spotId: 15,
+        url: "https://i.imgur.com/wtUaUAh.jpg",
+        preview: false
+      },
+      {
+        spotId: 15,
+        url: "https://i.imgur.com/5OViV5a.jpg",
+        preview: false
+      },
+      {
+        spotId: 15,
+        url: "https://static.wikia.nocookie.net/theregularshow/images/0/01/S2E11.005_Mr._Maellard%27s_Office.png",
         preview: false
       },
     ], {});
