@@ -51,6 +51,16 @@ module.exports = {
         preview: false
       },
       {
+        spotId: 2,
+        url: 'https://m.media-amazon.com/images/M/MV5BYTBmNThlYTAtYjc2Mi00OWEwLThlZmUtYzRmYjFjZWFiYWViXkEyXkFqcGdeQXVyODUyNjgzNTY@._V1_.jpg',
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: 'https://i.imgur.com/SnAc9Q9.jpeg',
+        preview: false
+      },
+      {
         spotId: 3,
         url: 'https://static.wikia.nocookie.net/crossovia/images/e/e4/Spongebob-pineapple-house.webp',
         preview: true
@@ -77,7 +87,7 @@ module.exports = {
       },
       {
         spotId: 4,
-        url: 'https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/9/9f/TreeHouseINT.png',
+        url: 'https://i.imgur.com/OIuNHJu.jpg',
         preview: true
       },
       {
@@ -88,6 +98,16 @@ module.exports = {
       {
         spotId: 4,
         url: 'https://cdna.artstation.com/p/assets/images/images/062/652/916/large/ellie-cairns-betterrenders-0015.jpg',
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: 'https://i.pinimg.com/originals/4e/dc/f0/4edcf07d541d2c65bc1cf289ec89ba17.jpg',
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: 'https://pbs.twimg.com/ext_tw_video_thumb/1641779652086865920/pu/img/xCBxuDetcbhAzMhW.jpg',
         preview: false
       },
       {
@@ -117,7 +137,7 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: 'https://i.ytimg.com/vi/X1nM__RkMP4/maxresdefault.jpg',
+        url: 'https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/05/up-movie-carls-house-social-feature.jpg',
         preview: true
       },
       {
@@ -133,6 +153,11 @@ module.exports = {
       {
         spotId: 6,
         url: 'https://static.wikia.nocookie.net/disney-x/images/5/50/Paradise_Falls.jpg',
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: 'https://i.pinimg.com/originals/21/fe/2f/21fe2f2839aac4bad4c4db1f1877fff0.jpg',
         preview: false
       },
       {
