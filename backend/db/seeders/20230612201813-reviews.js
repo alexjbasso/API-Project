@@ -11,40 +11,46 @@ module.exports = {
     options.tableName = 'Reviews';
     return queryInterface.bulkInsert(options, [
       {
-        spotId: 1,
+        spotId: 12,
         userId: 2,
-        review: 'Spot 1 is bad',
+        review: "Place was dilapidated and I'm pretty sure it's cursed.",
         stars: 1
       },
       {
-        spotId: 1,
-        userId: 3,
-        review: 'Spot 1 is good',
-        stars: 3
-      },
-      {
-        spotId: 2,
-        userId: 1,
-        review: 'Spot 2 is bad',
-        stars: 1
-      },
-      {
-        spotId: 2,
-        userId: 3,
-        review: 'Spot 2 is good',
-        stars: 3
-      },
-      {
-        spotId: 3,
-        userId: 1,
-        review: 'Spot 3 is bad',
-        stars: 1
-      },
-      {
-        spotId: 3,
-        userId: 2,
-        review: 'Spot 3 is great',
+        spotId: 15,
+        userId: 4,
+        review: 'Great place to stay and the host is so friendly!',
         stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 3,
+        review: 'It reminded me of my place but even better!',
+        stars: 4
+      },
+      {
+        spotId: 4,
+        userId: 1,
+        review: 'It rocks!',
+        stars: 5
+      },
+      {
+        spotId: 8,
+        userId: 12,
+        review: 'I swear, the house was like that when I got there.',
+        stars: 3
+      },
+      {
+        spotId: 5,
+        userId: 13,
+        review: 'This place is algebraic!',
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 10,
+        review: 'Hosts were great! Made me bacon pancakes every morning!',
+        stars: 4
       },
     ], {});
   },
@@ -53,7 +59,7 @@ module.exports = {
     options.tableName = 'Reviews';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      review: { [Op.substring]: ['is'] }
+      review: { [Op.substring]: ['.', '!'] }
     }, {});
   }
 };
