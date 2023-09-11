@@ -10,6 +10,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     options.tableName = 'SpotImages';
     return queryInterface.bulkInsert(options, [
+      // Simpson
       {
         spotId: 1,
         url: 'https://i.imgur.com/ZH5pc88.jpg',
@@ -35,6 +36,7 @@ module.exports = {
         url: 'https://i.pinimg.com/736x/8b/90/cd/8b90cd410795bfdda456eb15943dde1c.jpg',
         preview: false
       },
+      // Flintstone
       {
         spotId: 2,
         url: 'https://i.imgur.com/SwVMfv0.jpg',
@@ -60,6 +62,7 @@ module.exports = {
         url: 'https://i.imgur.com/SnAc9Q9.jpeg',
         preview: false
       },
+      // SquarePants
       {
         spotId: 3,
         url: 'https://i.imgur.com/J9ozxrJ.jpg',
@@ -85,6 +88,7 @@ module.exports = {
         url: 'https://i.imgur.com/sX07YK6.jpg',
         preview: false
       },
+      // Finn & Jake
       {
         spotId: 4,
         url: 'https://i.imgur.com/OIuNHJu.jpg',

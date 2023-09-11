@@ -2,10 +2,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
   width: 100%;
-  height: 65px;
-  background-color: #5dd607;
+  height: 120px;
+  /* background-color: #5dd607; */
+  background-image: url("../../../public/images/slime_border_bigger.png");
+  background-size: 650px;
+  margin-bottom: -25px;
 }
 
 .navbar {
@@ -14,9 +17,9 @@
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  margin: 15px 5px 10px 5px;
+  margin-top: -58px;
   width: 1075px;
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .nav-right {
@@ -28,6 +31,7 @@
   position: absolute;
   margin-left: 2em;
   margin-top: 1em;
+  font-size: 20px;
 }
 
 .dropdown-items {
