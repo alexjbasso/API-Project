@@ -56,7 +56,6 @@ function ProfileButton({ user }) {
           <div className="dropdown-items">
             <div className="user-info">
               <div>Hello, {user.firstName}</div>
-              <div>{user.email}</div>
             </div>
             <div>
               <div className="manage-spots-link-wrapper">

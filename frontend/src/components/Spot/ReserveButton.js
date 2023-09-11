@@ -21,7 +21,7 @@ function ReserveButton({ spot, reviews, user }) {
 
       <div className="review-sum">
         <span className='rate'>
-          <span className='spot-price'>
+          <span className='spot-price'> 
             ${spot.price}
           </span>
           <span className='night-span'>night</span>
@@ -31,7 +31,7 @@ function ReserveButton({ spot, reviews, user }) {
           <span>{spot.numReviews === 0 ? "New" : `${spot?.avgStarRating.toFixed(2)} • ${spot.numReviews} ${spot.numReviews === 1 ? "review" : "reviews"}`}</span>
         </div>
       </div>
-      {user && <BookingFormButton modalComponent={<BookingFormModal spot={spot} booking={userBooking} />} buttonText={userBooking ? "Edit Booking" : "Reserve"} />}</div>
+      {user && spot?.Owner.id !== user?.id && <BookingFormButton modalComponent={<BookingFormModal spot={spot} booking={userBooking} />} buttonText={userBooking ? "Edit Booking" : "Reserve"} />}</div>
   )
 }
 

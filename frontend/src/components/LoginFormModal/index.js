@@ -27,7 +27,7 @@ function LoginFormModal() {
   const logInDemoUser = (e) => {
     e.preventDefault();
     const demoCredentials = {
-      credential: "Demo",
+      credential: "SpongeBob",
       password: "password"
 
     }

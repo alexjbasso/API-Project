@@ -24,7 +24,7 @@ function AllSpots() {
     return (
       <div id="home-page-wrapper">
         <h1>Welcome to ToonBnb</h1>
-        <h2><em>Find where you belong</em></h2>
+        <h2><em>Find a place to get lost...</em></h2>
         <div className="spot-grid-body">
           {
             spots.map((spot) => (
